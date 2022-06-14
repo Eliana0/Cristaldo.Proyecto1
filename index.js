@@ -1,4 +1,4 @@
-class Libro{
+/* class Libro{
     constructor(titulo, precio, genero){
         this.titulo= titulo;
         this.precio= precio;
@@ -35,15 +35,9 @@ const misery= new Libro(`Misery`, 3000);
 const joyland= new Libro(`Joyland`, 3000);
 const laMitadOscura= new Libro(`La mitad oscura`, 4500);
 const elInstituto= new Libro(`El instituto`, 3600);
-const christine= new Libro(`Christine`, 2000);
+const christine= new Libro(`Christine`, 2000); */
 
 
-class Usuario{
-  constructor(nombre, mail){
-    this.nombre= nombre.toUpperCase();
-    this.edad= mail;
-  }
-}
 
 
 
@@ -71,14 +65,16 @@ class Usuario{
      {nombre: `EL INSTITUTO`, precio: 3600, genero: "CIENCIA FICCION"},     
      {nombre: `CHRISTINE`, precio: 2000, genero: "TERROR"}  
     ]; 
-    libros.sort( function(v1, v2){return v1[1]>v2[1]?-1:1});         
+    libros.sort((v1, v2) => {return v1[1]>v2[1]?-1:1});         
     console.table(libros);
 
-    let opcion= Number(prompt("*1 buscar libros *2 carrito de compras *3 comprar *4 solo el propietario"));
+    //¿Por qué no me devuelve el array ordenado por precios si tengo el .sort y antes lo hacia?
+
+    let opcion= Number(prompt("*1 buscar libros *2 comprar *3 solo el propietario"));
   
 switch (opcion) {
   case 1:
-  let opcion1 = Number(prompt("*Opción 1 buscar por precio *Opción 2 buscar por nombre *Opción 3 buscar por género"));
+  let opcion1 = Number(prompt("* 1 buscar por precio *2 buscar por nombre *3 buscar por género"));
             switch (opcion1) {
             case 1:
             let precio= Number(prompt("Ingrese la cifra que desea gastar en un libro"));
@@ -102,22 +98,6 @@ switch (opcion) {
 
 
     case 2:
-        let libro = prompt(`Ingrese el nombre del libro que desea agregar al carrito o "esc" para salir`).toUpperCase();
-        const adquiridos = [];
-      while (libro != 'ESC') {
-          adquiridos.push(libros.find(elemento => elemento.nombre == libro));
-          libro = prompt(`Ingrese el nombre del libro que desea agregar al carrito o "esc" para salir`).toUpperCase();
-      }
-      for (i= 0; i<adquiridos.length; i++) {
-          console.log(adquiridos[i]);
-      }
-      break;
-
-
-    case 3:
-        // const comprar= adquiridos.map(elemento => elemento.precio, elemento.precio)
-        // console.log(comprar)
-
         let elegir = prompt(`Ingrese el nombre del libro que desea comprar o "esc" para salir`).toUpperCase();
         const comprar = [];
       while (elegir != 'ESC') {
@@ -125,58 +105,76 @@ switch (opcion) {
           elegir = prompt(`Ingrese el nombre del libro que desea comprar o "esc" para salir`).toUpperCase();
         }
         let precios= comprar.map(elemento => elemento.precio +"......."+ elemento.nombre)
-      for (i= 0; i<precios.length; i++) {
-          console.log(precios[i]);
-      }
-      function suma(){
-        let precio= comprar.map(elemento => elemento.precio)
-        let sum= 0;
-        for(number of precio){
-         sum += number;
+
+       for (i= 0; i<precios.length; i++) {
+           console.log(precios[i]);
        }
-        console.log(`${sum}.......Total`)
+       function suma(){
+         let precio= comprar.map(elemento => elemento.precio);
+         let sumar= precio.reduce((acum, elemento)=> acum + elemento, 0)
+         console.log(sumar)
+
+       if((sumar >=3000)&&(sumar < 4000)){
+        let desc= Math.round(sumar*0.1)
+        console.log (desc + ".......-10%")
+        console.log(Math.round(sumar-desc)+ ".......Total" );
       }
+      else if((sumar >=4000)&&(sumar < 5000)){
+        let desc= Math.round(sumar*0.2)
+        console.log (desc+ ".......-20%")
+        console.log(Math.round(sumar-desc)+ ".......Total" );
+      }
+      else if(sumar >=5000){
+        let desc= Math.round(sumar*0.3)
+        console.log (desc+ ".......-30%")
+        console.log(Math.round(sumar-desc)+ ".......Total" );
+      }
+      else{
+        console.log(`${sumar}.......Total`)
+      }
+    }
       suma()
-
-
-
-      // function sumInput() {
-      //   let numbers = [];
-      //   while (true) {
-      //     let value = prompt("Un número, por favor...", 0);
-      //     // ¿Debemos cancelar?
-      //     if (value === "" || value === null || !isFinite(value)) break;
-      //     numbers.push(+value);
-      //   }
-      //   let sum = 0;
-      //   for (let number of numbers) {
-      //     sum += number;
-      //   }
-      //   return sum;
-      // }
-      // alert( sumInput() );
-
-
-
-
-
       break;
 
 
-    case 4:
-      const usuario= new Usuario (prompt("Escriba su nombre"), prompt("Escriba su mail"));
-      alert(`Bienvenido, ${usuario.nombre}`)
-      break;
+    case 3:
+      let usuario= "papita";
+      if (usuario=="papita"){
+        let opcion= Number(prompt(`*1 agregar elementos *2 Sustraer elementos`))
+        switch (opcion) {
+          case 1:
+            let elementos1= Number(prompt(`¿Cuantos elementos desea agregar a la tienda?`));
+            for (i=0; i<elementos1; i++){
+              libros.push({nombre: prompt("Ingresa el nombre del libro que desea agregar").toUpperCase(), precio: Number(prompt("Ingrese el precio del libro")), genero: prompt("Ingrese el genero del libro").toUpperCase()})
+            }
+            libros.sort((v1, v2) => {return v1[1]>v2[1]?-1:1});         
+            console.table(libros);
+            break;
+
+            case 2: 
+            let elementos2= Number(prompt(`¿Cuantos elementos desea sustraer de la tienda?`));
+            for (i=0; i<elementos2; i++){
+              let nombreSustraer= prompt("Ingrese el nombre del libro que desea sustraer").toUpperCase();
+              let buscarSustraer= libros.find(elemento => elemento.nombre == nombreSustraer);
+              let numBuscar= libros.indexOf(buscarSustraer);
+              libros.splice(numBuscar ,1);
+              console.log(libros);
+            }
+            libros.sort((v1, v2) => {return v1[1]>v2[1]?-1:1});         
+            console.table(libros);
+            break;
+        
+          //No entiendo porqué me devuelve un array con los elementos sustraidos cuando no agregé una salida
+
+          default:
+            break;
+        }
+      }
+    } 
 
 
-    case 5: 
-  default:
-    break;
-}
   
 
 
 
-
-//¿cómo puedo hacer que el nombreL tenga un .sort así me salen los resultados en orden?
 
