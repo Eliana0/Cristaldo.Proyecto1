@@ -11,6 +11,7 @@
 
 </head>
 <body>
+    <script src="index.js"></script>
     <header>
         <h1>Stephen King</h1>
         <nav>
@@ -22,44 +23,68 @@
         </nav>
     </header>
 
-    <ul id="listaBienvenida"></ul>
+        <!--CONTACTO-->
+        <h1 class="titulo">CONTACTANOS</h1>
+        <div class="contactanos">
+        <div class= "mensaje">
+            <form>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Nombre" aria-label="First name">
+              </div>
+              <div class="col">
+                <input type="text" class="form-control" placeholder="Apellido" aria-label="Last name">
+              </div>
+              <div class="col">
+                <input type="email" class="form-control" placeholder="Mail" aria-label="Last name">
+              </div>
+              <div class="col">
+                <input type="number" class="form-control" placeholder="Teléfono" aria-label="Last name">
+              </div>
+              <div class="form-floating">
+                <textarea class="form-control" placeholder="Escriba aquí" id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="floatingTextarea2">Escriba aquí</label>
+              </div>
+            </form>
+                <div>
+                  <button type="submit" class="formulario__enviar">Enviar</button>
+              </div>                                          
+            </div>
+        </div>
 
 
-    <script src="index.js"></script>
-        
-    <div class="image">
-        <img src="https://alternativanerd.com.br/wp-content/uploads/2020/08/Stephen-King.jpg" class="img-fluid" alt="Responsive image">
-        <div class="text">
-           <p>El autor vive en Bangor, Maine con su esposa Tabitha Spruce, quien también es novelista. 
-            Tienen otra casa en el distrito Western Lakes de Maine. King pasa el invierno en su 
-            mansión con vista al mar ubicada en Sarasota, Florida. Recientemente construyó otra 
-            casa en Connecticut. Sus tres hijos Naomi Rachel, Joe Hill y Owen Phillip, alcanzaron 
-            la mayoría de edad y viven por su cuenta. Owen publicó en 2005 su primera colección 
-            de historias titulada We're All in This Together: A Novella and Stories, y Joe Hill es 
-            autor de 20th Century Ghosts, una serie de cuentos y de varias novelas, de las que destacan 
-            El traje del muerto y Cuernos.
-            King disfruta del béisbol y es fanático del equipo profesional Boston Red Sox, hecho que 
-            se puede evidenciar en gran parte de su obra, especialmente en la novela La chica que amaba
-             a Tom Gordon, en la que hace referencias constantes al lanzador Tom Gordon. El escritor 
-             también es un apasionado de las motocicletas Harley Davidson. En el otoño de 1994 realizó 
-             una gira promocional para la novela Insomnia a bordo de su Harley, deteniéndose en varias 
-             ciudades estadounidenses para realizar promoción en librerías.
-            Un fanático del rock, el autor formó parte de la agrupación Rock Bottom Remainders, 
-            conformada por otros escritores y editores como Dave Barry, Ridley Pearson, Matt Groening 
-            y Amy Tan, entre otros. Ha expresado en más de una ocasión que sus bandas de rock favoritas
-            son The Ramones y AC/DC. The Ramones aportaron la canción «Pet Sematary» para la banda 
-            sonora de la película Cementerio de animales de 1989, basada en la novela de King del mismo 
-            nombre. La banda australiana AC/DC fue la encargada de aportar la totalidad de la banda 
-            sonora de la película de 1986 Maximum Overdrive, dirigida por el propio King y basada en su 
-            relato corto Camiones.</p>
+    <!--SUSCRIBETE-->
+    <main class="main__formulario">
+        <div class="bienvenida">
+            <h1 class="titulo">¡SUSCRIBETE!</h1>
+        </div>
+    <div class="formulario">
+        <div class="col-12">
+            <label for="inputText" class="form-label"></label>
+            <input type="text" class="form-control" id="inputText" placeholder="Nombre">
+        </div>
+        <div class="col-12">
+            <label for="inputText" class="form-label"></label>
+            <input type="text" class="form-control" id="inputText" placeholder="Apellido">
+        </div>
+        <div class="col-12">
+            <label for="inputDate" class="form-label"></label>
+            <input type="date" class="form-control" id="inputDate" placeholder="">
+        </div>
+        <div class="col-12">
+            <label for="inputNumber" class="form-label"></label>
+            <input type="number" class="form-control" id="inputText" placeholder="Teléfono">
+        </div>
+        <div class="col-12">
+            <label for="inputText" class="form-label"></label>
+            <input type="Text" class="form-control" id="inputText" placeholder="Ciudad">
+        </div>
+        <div class="col-12">
+            <button type="submit" class="formulario__enviar">Enviar</button>
         </div>
     </div>
-    
-              
-
-
+</main>
 <!--FOOT-->
-<footer >
+<footer class="footerIndex">
     <p>SEGUINOS EN NUESTRAS REDES</p>
     <div class="redes">
         <svg xmlns="http://www.w3.org/2000/svg" width="100" height="50" fill="currentColor" class="bi bi-tiktok" viewBox="0 0 16 16">
