@@ -26,27 +26,45 @@ let libros = new Array;
     console.table(libros);  
 
 
- function crearTienda(){
-  let contenido= document.getElementById("galeria");
-for(const elemento of libros){
-let contenedor= document.createElement(`div`);
-contenedor.innerHTML= 
-                    `<div class="card" style="max-width: 450px;">
-                    <div class="img-box">
-                    <img src="${elemento.img}" class="card-img-top" id="imagen">
-                    <button class="botonComprar" id="boton">Agregar al carrito</button>
-                    </div>
-                    <div class="card-body">
-                    <h1 id="libroTitulo">${elemento.nombre}</h1>
-                    <h2 id="libroPrecio">$${elemento.precio}</h2>
-                    <b>${elemento.genero}</b>
-                    <p>${elemento.descripcion}</p><br>
-                    </div>
-                    </div>; `                  
-                    contenido.append(contenedor);
-                  } 
-                }
-crearTienda()  
+
+    
+
+  function buscador(){
+  const bus= document.getElementById("buscarTitulo");
+  bus.addEventListener("keyup", ()=>{
+      const busqueda= bus.value;
+        let titulo= libros.filter(elemento => elemento.nombre.startsWith(busqueda.toUpperCase()));
+        crearTienda(titulo)
+      })
+  }buscador()
+  
+
+
+
+
+  function crearTienda(place){
+    let contenedor= document.getElementById("galeria");
+    for(const elemento of place){
+      let contenido= document.createElement(`div`);
+      contenido.innerHTML= `
+                          <div class="card" style="max-width: 450px;">
+                          <div class="img-box">
+                          <img src="${elemento.img}" class="card-img-top" id="imagen">
+                          <button class="botonComprar" id="botonCarrito">Agregar al carrito</button>
+                          </div>
+                          <div class="card-body">
+                          <h1 id="libroTitulo">${elemento.nombre}</h1>
+                          <h2 id="libroPrecio">$${elemento.precio}</h2>
+                          <b>${elemento.genero}</b>
+                          <p>${elemento.descripcion}</p><br>
+                          </div>
+                          </div>; `                  
+                          contenedor.append(contenido);
+                        } 
+                      }
+
+
+
 
 
                 
@@ -59,9 +77,9 @@ crearTienda()
     botonSus.addEventListener("click", (e)=>{
        e.preventDefault();
         if(susNombre.value.length == 0){
-          susText.innerHTML= `Escriba su nombre`
+          susText.innerHTML= `*Escriba su nombre`
         }else if(susMail.value.length == 0){
-          susText.innerHTML= `Escriba su mail`
+          susText.innerHTML= `*Escriba su mail`
         }else{
           susText.innerHTML=`¡¡Felisitaciones!! ${susNombre.value} Te has suscripto a la página de libros de Stephen king`
         }
@@ -96,63 +114,23 @@ function contacto(){
 contacto()  
 
 
-function carritoDeCompras(){
-  const boton= document.getElementById("boton");
-  const carritoDeCompras= document.getElementById("carritoDeCompras");
-  const libroTitulo= document.getElementById("libroTitulo").value;
-  const libroPrecio= document.getElementById("libroPrecio").value;
+/* function carritoDeCompras(){
+  const boton= document.getElementById("botonCarrito");
+  const libroTitulo= document.getElementById("libroTitulo");
+  const libroPrecio= document.getElementById("libroPrecio");
   boton.addEventListener("click", ()=>{
-    //let carrito= document.createElement(`div`);
-    //let titulo= libroTitulo.value;
-    //let precio= libroPrecio.value;
-    carritoDeCompras.innerHTML= `
-    <h3 style="color= red">${libroTitulo}...........................${libroPrecio}</h3>`
-    carritoDeCompras.append(carrito)
+    console.log(libroPrecio.value)
+     const carritoCompras= document.getElementById("carritoDeCompras");
+    let carrito= document.createElement(`div`);
+    carrito.innerHTML= `
+    <h3 style="color= red">${libroTitulo.value}...........................${libroPrecio.value}</h3>`
+    carritoCompras.append(carrito)
   })
   
-}carritoDeCompras()
-
-
-/* function carrito(){
-  const boton= document.getElementById("boton");
-  boton.addEventListener("click", ()=>{
-    const libroTitulo= document.getElementById("libroTitulo").value;
-    const libroPrecio= document.getElementById("libroPrecio").value;
-    document.getElementById("carritoDeCompras").innerHTML
-  })
-} */
-
-
-/* function crearTienda(){
-  let contenido= document.getElementById("galeria");
-for(const elemento of libros){
-let contenedor= document.createElement(`div`);
-contenedor.innerHTML= 
-                    `<div class="card" style="max-width: 450px;">
-                    <div class="img-box">
-                    <img src="${elemento.img}" class="card-img-top" id="imagen">
-                    <button class="botonComprar" id="boton">Agregar al carrito</button>
-                    </div>
-                    <div class="card-body">
-                    <h1 id="libroTitulo">${elemento.nombre}</h1>
-                    <h2 id="libroPrecio">$${elemento.precio}</h2>
-                    <b>${elemento.genero}</b>
-                    <p>${elemento.descripcion}</p><br>
-                    </div>
-                    </div>; `                  
-                    contenido.append(contenedor);
-                  } 
-                }
-crearTienda()  */
+}carritoDeCompras() */
 
 
 
-
-//Hola, Pablo ¿cómo va? En el buscador quise buscar elementos por precio, título y género, 
-//como tengo más abajo, así que puse un buscador con esas tres opciones pero se me complica 
-//a la hora de hacer click en alguna de las opciones para que me aparezca, en lugar de la
-//opción, el buscador. Así que terminé copiando mas o menos lo del aferclass. No sé si me 
-//compliqué o es que algo parecido vamos a ver más adelante.
 
 
 
@@ -176,7 +154,7 @@ switch (opcion) {
             break;
             case 3:
               let genero= prompt("Ingrese genero que desea buscar").toUpperCase();
-              let generoL= libros.filter(elemento => elemento.genero.includes(genero));
+              let generoL= libros.filter(elemento => elemento.genero.startsWith(genero));
               console.log(generoL)
               break;
             default:
@@ -259,3 +237,32 @@ switch (opcion) {
       }
     } 
 
+/*     function crearTienda(place){
+      let contenedor= document.getElementById("galeria");
+      for(const elemento of place){
+        let contenido= document.createElement(`div`);
+        contenido.innerHTML= `
+                            <div class="card" style="max-width: 450px;">
+                            <div class="img-box">
+                            <img src="${elemento.img}" class="card-img-top" id="imagen">
+                            <button class="botonComprar" id="botonCarrito">Agregar al carrito</button>
+                            </div>
+                            <div class="card-body">
+                            <h1 id="libroTitulo">${elemento.nombre}</h1>
+                            <h2 id="libroPrecio">$${elemento.precio}</h2>
+                            <b>${elemento.genero}</b>
+                            <p>${elemento.descripcion}</p><br>
+                            </div>
+                            </div>; `                  
+                            contenedor.append(contenido);
+                          } 
+                        }  crearTienda(libros) */
+
+  /*   function buscador(){
+  const bus= document.getElementById("buscarTitulo");
+  bus.addEventListener("keyup", ()=>{
+      const busqueda= bus.value;
+        let titulo= libros.filter(elemento => elemento.nombre.startsWith(busqueda.toUpperCase()));
+        crearTienda(titulo)
+      })
+  }buscador() */
