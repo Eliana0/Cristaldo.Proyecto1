@@ -1,5 +1,5 @@
 
-let libros = new Array;
+ let libros = new Array;
   libros = [
      {nombre: `IT`, precio: 6400, genero: "TERROR", img: `ima/IT.jpg`, descripcion: "It es un payaso malvado que vive bajo la ciudad de Derry y se alimenta del miedo de sus victimas. Sólo un grupo de niños unidos por la amistad podrán detenerlo."},
      {nombre: `DESPUÉS`, precio: 4200, genero: "CRIMINAL, SUSPENSO", img: `ima/despues.jpg`, descripcion: "Cuando una inspectora le obliga a evitar el último atentado de un asesino, Jamie no tardará en descubrir que el precio que debe pagar por su poder tal vez es demasiado alto."}, 
@@ -23,52 +23,73 @@ let libros = new Array;
      {nombre: `CHRISTINE`, precio: 2000, genero: "TERROR", img: "ima/CHRISTINE.jpg", descripcion: "Arnie Cunningham compra su primer auto. Pero, cuando la gente comienza a morir en sospechosos accidentes, no se puede negar la verdad: el auto está vivo."}   
     ]; 
     libros.sort((v1, v2) => v1.precio - v2.precio);         
-    console.table(libros);  
+    console.table(libros);    
 
 
 
-    
-
-  function buscador(){
-  const bus= document.getElementById("buscarTitulo");
-  bus.addEventListener("keyup", ()=>{
-      const busqueda= bus.value;
-        let titulo= libros.filter(elemento => elemento.nombre.startsWith(busqueda.toUpperCase()));
-        crearTienda(titulo)
-      })
-  }buscador()
+/*    function buscador(){
+    const bus= document.getElementById("buscarTitulo");
+    bus.addEventListener("keyup", ()=>{
+        const busqueda= bus.value;
+        if(busqueda == undefined){
+          crearTienda(libros)
+        }else if (busqueda == ``){
+          let titulo= libros.filter(elemento => elemento.nombre.startsWith(busqueda.toUpperCase()));
+          crearTienda(titulo)
+        }
+        })
+    }buscador() */  
   
+//Hola!! acá quise hacer que los elementos se buscaran, pero me aparecen varias tarjetas a la vez
+//y no las puedo borrar. En el after hiciste eso epro con un innerHTML vacío. No sé si tengo que 
+//cambiar la forma en la que hago la card o se para tener el innerHTML vacío o si hay alguna otra forma
 
 
 
+function crearTienda(place){
+  let contenedor= document.getElementById("galeria");
+  for(const elemento of place){
+    let contenido= document.createElement(`div`);
+    contenido.innerHTML= `
+                        <div class="card" style="max-width: 450px;">
+                        <div class="img-box">
+                        <img src="${elemento.img}" class="card-img-top" id="imagen">
+                        <button class="botonComprar" id="botonCarrito">Agregar al carrito</button>
+                        </div>
+                        <div class="card-body">
+                        <h1 id="libroTitulo">${elemento.nombre}</h1>
+                        <h2 id="libroPrecio">$${elemento.precio}</h2>
+                        <b>${elemento.genero}</b>
+                        <p>${elemento.descripcion}</p><br>
+                        </div>
+                        </div>; `                  
+                        contenedor.append(contenido);
+                      } 
+                    }
+  crearTienda(libros)
+                      
+                      
 
-  function crearTienda(place){
-    let contenedor= document.getElementById("galeria");
-    for(const elemento of place){
-      let contenido= document.createElement(`div`);
-      contenido.innerHTML= `
-                          <div class="card" style="max-width: 450px;">
-                          <div class="img-box">
-                          <img src="${elemento.img}" class="card-img-top" id="imagen">
-                          <button class="botonComprar" id="botonCarrito">Agregar al carrito</button>
-                          </div>
-                          <div class="card-body">
-                          <h1 id="libroTitulo">${elemento.nombre}</h1>
-                          <h2 id="libroPrecio">$${elemento.precio}</h2>
-                          <b>${elemento.genero}</b>
-                          <p>${elemento.descripcion}</p><br>
-                          </div>
-                          </div>; `                  
-                          contenedor.append(contenido);
-                        } 
-                      }
+/* function carritoDeCompras(){
+  const botonCarrito= document.getElementById("botonCarrito");
+  const libroTitulo= document.getElementById("libroTitulo").;
+  const libroPrecio= document.getElementById("libroPrecio");
+  botonCarrito.addEventListener("click", ()=>{
+    const carritoCompras= document.getElementById("carritoDeCompras");
+    let carrito= document.createElement(`div`);
+    carrito.innerHTML= `
+    <h3 style="color: red">${libroTitulo.value}...........................${libroPrecio.value}</h3>`
+    carritoCompras.append(carrito) 
+  })
+}carritoDeCompras()  */
+
+//Hola, Pablo. Acá quiero hacer que funcionen los botones, pero sólo funciona el del primer elemento
+//y me devuelve un valor indefinido :(
 
 
 
-
-
-                
- function suscribirse(){
+                      
+function suscribirse(){
     const susNombre= document.getElementById("susNombre");
     const susApellido= document.getElementById("susApellido");  
     const susMail= document.getElementById("susMail");
@@ -86,6 +107,8 @@ let libros = new Array;
       })
       }
 suscribirse()  
+
+
 
 function contacto(){
   const formNombre= document.getElementById("formNombre");
@@ -112,25 +135,6 @@ function contacto(){
     })
     }
 contacto()  
-
-
-/* function carritoDeCompras(){
-  const boton= document.getElementById("botonCarrito");
-  const libroTitulo= document.getElementById("libroTitulo");
-  const libroPrecio= document.getElementById("libroPrecio");
-  boton.addEventListener("click", ()=>{
-    console.log(libroPrecio.value)
-     const carritoCompras= document.getElementById("carritoDeCompras");
-    let carrito= document.createElement(`div`);
-    carrito.innerHTML= `
-    <h3 style="color= red">${libroTitulo.value}...........................${libroPrecio.value}</h3>`
-    carritoCompras.append(carrito)
-  })
-  
-}carritoDeCompras() */
-
-
-
 
 
 
@@ -266,3 +270,7 @@ switch (opcion) {
         crearTienda(titulo)
       })
   }buscador() */
+
+
+
+  
