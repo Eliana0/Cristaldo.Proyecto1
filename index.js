@@ -37,8 +37,8 @@ contenedor.innerHTML=
                     <button class="botonComprar" id="boton">Agregar al carrito</button>
                     </div>
                     <div class="card-body">
-                    <h1>${elemento.nombre}</h1>
-                    <h2>$${elemento.precio}</h2>
+                    <h1 id="libroTitulo">${elemento.nombre}</h1>
+                    <h2 id="libroPrecio">$${elemento.precio}</h2>
                     <b>${elemento.genero}</b>
                     <p>${elemento.descripcion}</p><br>
                     </div>
@@ -50,33 +50,109 @@ crearTienda()
 
 
                 
-/* function suscribirse(){
+ function suscribirse(){
     const susNombre= document.getElementById("susNombre");
     const susApellido= document.getElementById("susApellido");  
     const susMail= document.getElementById("susMail");
     let botonSus= document.getElementById("botonSuscripcion");
+    const susText= document.getElementById("susText")
     botonSus.addEventListener("click", (e)=>{
        e.preventDefault();
-       alert(`¡¡FELISITACIONES!! ${susNombre} Te has suscripto a la página de libros de Stephen king`)
+        if(susNombre.value.length == 0){
+          susText.innerHTML= `Escriba su nombre`
+        }else if(susMail.value.length == 0){
+          susText.innerHTML= `Escriba su mail`
+        }else{
+          susText.innerHTML=`¡¡Felisitaciones!! ${susNombre.value} Te has suscripto a la página de libros de Stephen king`
+        }
       })
       }
-suscribirse()  */ 
+suscribirse()  
+
+function contacto(){
+  const formNombre= document.getElementById("formNombre");
+  const formApellido= document.getElementById("formApellido");  
+  const formMail= document.getElementById("formMail"); 
+  const formNumero= document.getElementById("formNumero");
+  const formText= document.getElementById("formText");
+  const botonSus= document.getElementById("botonContacto");
+  const textContacto= document.getElementById("textContacto");
+  botonSus.addEventListener("click", (e)=>{
+    e.preventDefault();
+       if(formText.value.length < 50){
+        textContacto.innerHTML=`*El mensaje debe tener por lo menos 50 caracteres`
+      }else if(formNombre.value.length == 0){
+        textContacto.innerHTML=`*Escriba un nombre`
+      }else if(formApellido.value.length == 0){
+        textContacto.innerHTML=`*Escriba un apellido`
+      }else if(formMail.value.length == 0){
+        textContacto.innerHTML=`*Escriba un mail`
+      }
+      else{
+        textContacto.innerHTML=`Su mensaje ha sido enviado correctamente. A la brevedad nos pondremos en contacto con usted`
+      }
+    })
+    }
+contacto()  
 
 
-//Hola ¿cómo va? Pablo mira, no entiendo por qué no funciona la alerta. Probé en una página aparte y me funcionó
-                
+function carritoDeCompras(){
+  const boton= document.getElementById("boton");
+  const carritoDeCompras= document.getElementById("carritoDeCompras");
+  const libroTitulo= document.getElementById("libroTitulo").value;
+  const libroPrecio= document.getElementById("libroPrecio").value;
+  boton.addEventListener("click", ()=>{
+    //let carrito= document.createElement(`div`);
+    //let titulo= libroTitulo.value;
+    //let precio= libroPrecio.value;
+    carritoDeCompras.innerHTML= `
+    <h3 style="color= red">${libroTitulo}...........................${libroPrecio}</h3>`
+    carritoDeCompras.append(carrito)
+  })
+  
+}carritoDeCompras()
 
-let tienda= document.getElementById("tienda");
-let boton= document.getElementById("boton");
-boton.addEventListener("click", ()=>{
-  let card= document.getElementsByClassName("card").value;
-  let compra= card.map(elemento => elemento.precio +"......."+ elemento.nombre);
-  let listaCompra= document.createElement("div");
-  listaCompra.innerHTML= `<p style="color: red">${compra}</p>`
-  tienda.append(listaCompra); 
-})
+
+/* function carrito(){
+  const boton= document.getElementById("boton");
+  boton.addEventListener("click", ()=>{
+    const libroTitulo= document.getElementById("libroTitulo").value;
+    const libroPrecio= document.getElementById("libroPrecio").value;
+    document.getElementById("carritoDeCompras").innerHTML
+  })
+} */
 
 
+/* function crearTienda(){
+  let contenido= document.getElementById("galeria");
+for(const elemento of libros){
+let contenedor= document.createElement(`div`);
+contenedor.innerHTML= 
+                    `<div class="card" style="max-width: 450px;">
+                    <div class="img-box">
+                    <img src="${elemento.img}" class="card-img-top" id="imagen">
+                    <button class="botonComprar" id="boton">Agregar al carrito</button>
+                    </div>
+                    <div class="card-body">
+                    <h1 id="libroTitulo">${elemento.nombre}</h1>
+                    <h2 id="libroPrecio">$${elemento.precio}</h2>
+                    <b>${elemento.genero}</b>
+                    <p>${elemento.descripcion}</p><br>
+                    </div>
+                    </div>; `                  
+                    contenido.append(contenedor);
+                  } 
+                }
+crearTienda()  */
+
+
+
+
+//Hola, Pablo ¿cómo va? En el buscador quise buscar elementos por precio, título y género, 
+//como tengo más abajo, así que puse un buscador con esas tres opciones pero se me complica 
+//a la hora de hacer click en alguna de las opciones para que me aparezca, en lugar de la
+//opción, el buscador. Así que terminé copiando mas o menos lo del aferclass. No sé si me 
+//compliqué o es que algo parecido vamos a ver más adelante.
 
 
 

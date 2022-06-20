@@ -21,15 +21,27 @@ header{
   font-size: larger;
   box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
 }
-header p{
-text-decoration: none;
-color: #ffffff82;
-margin-top: 12%;
-margin-left: 40%;
+
+header .buscador{
+  display: flex;
+  align-self: flex-end;
+  padding: 2%;
+  color: black;
 }
 
-header nav ul a:hover{
-  color: white
+header .buscador input{
+  height: 30px;
+  width: 60%;
+  background: transparent;
+  border: transparent;
+  border-bottom: 1px solid black;
+  outline: none;
+  display: flex;
+  align-self: flex-start;
+  font-size: 100%;
+}
+header .buscador input::placeholder{
+  color: rgba(0, 0, 0, 0.589);
 }
 
 
@@ -104,7 +116,7 @@ header nav ul a:hover{
   justify-content: center;
   text-align: center;
 }
-input{
+.form .form-control{
   width: 100%;
   margin: 2%;
   height: 25px;
@@ -114,26 +126,25 @@ input{
   border: none;
   font-size: 150%;
   color: grey;
+  font-family: 'Times New Roman', Times, serif;
 }
-input:hover::placeholder{
+.form .form-control:hover::placeholder{
   color: grey;
 }
-input:focus{
+.form .form-control:focus{
   color: grey;
 }
-textarea{
-  color: grey;
+.text-red{
   width: 100%;
   margin: 2%;
+  height: 25px;
   justify-content: center;
   text-align: center;
   background: transparent;
   border: none;
   font-size: 150%;
+  color: #b80e0e;
   font-family: 'Times New Roman', Times, serif;
-}
-textarea:focus{
-  color: grey;
 }
 
 

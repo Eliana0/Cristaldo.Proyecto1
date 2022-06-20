@@ -5,6 +5,9 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="practica.css">
+    <!-- Bootstrap CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
     <title>Stephen King</title>
 
 
@@ -14,11 +17,20 @@
 <body>
     <header>
         <h1>Stephen King</h1>
-        <p>Tienda de libros</p>
+        <div class="buscador">
+            <input type="text" placeholder="Buscar" id="buscarTitulo">
+        </div>
     </header>
-
     
-    <!--PRESENTACION-->
+    <!--
+        <input type="text" placeholder="Título">
+        <input type="number" placeholder="Monto">
+          <input type="text" placeholder="Género">
+    -->
+    
+    <!--BUSCADOR-->
+
+    <div id="listaBuscar"></div>
     
     <!--GALERIA--> 
     <main>
@@ -26,13 +38,12 @@
             <h1 class="titulo">TIENDA</h1>
             <div id="galeria"></div>    
             
-            <script src="index.js"></script>
         </div>
         
         <!--TIENDA-->
         
         
-        <div id="tienda"></div>
+        <div id="carritoDeCompras"></div>
         
         
         <!--CONTACTO-->
@@ -43,24 +54,25 @@
                         <div class= "mensaje">
                     <div class="form-body">
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Nombre" aria-label="First name">
+                        <input type="text" class="form-control" id="formNombre" placeholder="Nombre">
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" placeholder="Apellido" aria-label="Last name">
+                        <input type="text" class="form-control" id="formApellido" placeholder="Apellido">
                     </div>
                     <div class="col">
-                        <input type="email" class="form-control" placeholder="Mail" aria-label="Last name">
+                        <input type="email" class="form-control" id="formMail" placeholder="Mail">
                     </div>
                     <div class="col">
-                        <input type="number" class="form-control" placeholder="Teléfono" aria-label="Last name">
+                        <input type="number" class="form-control" id="formNumero" placeholder="Teléfono">
                     </div>
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Escriba aquí" id="floatingTextarea2" style="height: 100px"></textarea>
+                        <textarea class="form-control" placeholder="Escriba aquí" id="formText" style="height: 100px"></textarea>
                         <label for="floatingTextarea2"></label>
                     </div>
                     <div>
                         <button type="submit" class="botonComprar" id="botonContacto">Enviar</button>
-                        </div>                                          
+                        </div>     
+                        <div id="textContacto" class="text-red"></div>                                     
                     </div>
                 </div>
             </div>
@@ -87,6 +99,7 @@
                         <div class="col-12">
                             <button type="submit" class="botonComprar" id="botonSuscripcion">Enviar</button>
                         </div>
+                        <div id="susText" class="text-red"></div>
                 </div>
             </div>
         </div>
@@ -94,6 +107,7 @@
         
         </div>
     
+        <script src="index.js"></script>
     </main>
 
 
