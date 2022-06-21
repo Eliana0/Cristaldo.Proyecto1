@@ -27,7 +27,7 @@
 
 
 
-/*    function buscador(){
+ /*   function buscador(){
     const bus= document.getElementById("buscarTitulo");
     bus.addEventListener("keyup", ()=>{
         const busqueda= bus.value;
@@ -38,50 +38,60 @@
           crearTienda(titulo)
         }
         })
-    }buscador() */  
+    }buscador()*/
   
 //Hola!! acá quise hacer que los elementos se buscaran, pero me aparecen varias tarjetas a la vez
 //y no las puedo borrar. En el after hiciste eso epro con un innerHTML vacío. No sé si tengo que 
 //cambiar la forma en la que hago la card o se para tener el innerHTML vacío o si hay alguna otra forma
 
 
-
 function crearTienda(place){
   let contenedor= document.getElementById("galeria");
-  for(const elemento of place){
+  for(const elemento in place){
+    let libro= place[elemento];
+    let img = libro["img"]
+    let nombre= libro["nombre"];
+    let precio= libro["precio"];
+    let genero= libro["genero"];
+    let descripcion= libro["descripcion"];
     let contenido= document.createElement(`div`);
     contenido.innerHTML= `
                         <div class="card" style="max-width: 450px;">
                         <div class="img-box">
-                        <img src="${elemento.img}" class="card-img-top" id="imagen">
+                        <img src="${img}" class="card-img-top" id="imagen">
                         <button class="botonComprar" id="botonCarrito">Agregar al carrito</button>
                         </div>
                         <div class="card-body">
-                        <h1 id="libroTitulo">${elemento.nombre}</h1>
-                        <h2 id="libroPrecio">$${elemento.precio}</h2>
-                        <b>${elemento.genero}</b>
-                        <p>${elemento.descripcion}</p><br>
+                        <h1 id="libroTitulo">${nombre}</h1>
+                        <h2 id="libroPrecio">$${precio}</h2>
+                        <b>${genero}</b>
+                        <p>${descripcion}</p><br>
                         </div>
-                        </div>; `                  
+                        </div> `                  
                         contenedor.append(contenido);
                       } 
                     }
   crearTienda(libros)
                       
-                      
+      
 
-/* function carritoDeCompras(){
-  const botonCarrito= document.getElementById("botonCarrito");
-  const libroTitulo= document.getElementById("libroTitulo").;
-  const libroPrecio= document.getElementById("libroPrecio");
-  botonCarrito.addEventListener("click", ()=>{
-    const carritoCompras= document.getElementById("carritoDeCompras");
-    let carrito= document.createElement(`div`);
-    carrito.innerHTML= `
-    <h3 style="color: red">${libroTitulo.value}...........................${libroPrecio.value}</h3>`
-    carritoCompras.append(carrito) 
-  })
-}carritoDeCompras()  */
+ /*  let precioL = libros.map(elemento => elemento.precio);
+  console.log(precioL) */
+    
+   
+
+ function carritoDeCompras(){
+  const boton = document.querySelector("#botonCarrito");
+  const carritoDeCompras= document.getElementById("carritoDeCompras");
+      boton.addEventListener("click", ()=>{
+      let carrito= document.createElement("div");
+      let nombreL = libros.map(elemento => elemento.nombre);
+      let precioL= libros.map(elemento => elemento.precio);
+      carrito.innerHTML= `<h3 style="color: brown">${nombreL}.........${precioL}`
+      carritoDeCompras.append(carrito)
+    })
+      }
+carritoDeCompras() 
 
 //Hola, Pablo. Acá quiero hacer que funcionen los botones, pero sólo funciona el del primer elemento
 //y me devuelve un valor indefinido :(
@@ -272,5 +282,10 @@ switch (opcion) {
   }buscador() */
 
 
+  /* for(e in libros){
+    for (elementos in libros[e]){
+      console.log(libros[e][elementos])
+    }
+  } */
 
   
