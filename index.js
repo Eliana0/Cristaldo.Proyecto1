@@ -53,7 +53,8 @@ function crearTienda(){
     boton.addEventListener("click", () => {
       let carritoDeCompras= document.getElementById("carritoDeCompras");
       let carritoElement= document.createElement("div");
-      carritoElement.innerHTML= `<div>${libro.nombre}<div></div>${libro.precio}</div>`
+      carritoElement.className= "carritoElement"
+      carritoElement.innerHTML= `<div>${libro.nombre}</div><div>$${libro.precio}</div>`
      carritoDeCompras.appendChild(carritoElement);
 /*       carrito.push(
       )
@@ -295,3 +296,8 @@ switch (opcion) {
     });
   });
 }crearTienda()   */
+
+
+
+/* let carritoDeCompras= document.getElementById("carritoDeCompras");
+carritoDeCompras.innerHTML="hola"; */
