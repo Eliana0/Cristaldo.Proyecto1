@@ -47,53 +47,50 @@ function crearTienda(){
     boton.className = "botonComprar";
     boton.innerText = "Agregar al carrito";
     cardImg.appendChild(boton);
-    
-    let carrito = [];
-    
-    boton.addEventListener("click", () => {
+
+
+    boton.addEventListener("click", ()=>{
+      const carrito = [];
+      carrito.push({precio: libro.precio, nombre: libro.nombre})   
+      carrito.forEach((e)=>{
       let carritoDeCompras= document.getElementById("carritoDeCompras");
       let carritoElement= document.createElement("div");
+      let borrarElement= document.createElement("button");
       carritoElement.className= "carritoElement"
-      carritoElement.innerHTML= `<div>${libro.nombre}</div><div>$${libro.precio}</div>`
-     carritoDeCompras.appendChild(carritoElement);
-/*       carrito.push(
-      )
-  ;
-      carritoDeCompras.append(carrito); */
+      carritoElement.innerHTML= `<div>${e.nombre}</div><div>$${e.precio}</div>`
+      borrarElement.className="borrar";
+      borrarElement.innerHTML= `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+      <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+    </svg>`;
+      borrarElement.addEventListener("click", ()=>{
+        carritoElement.parentNode.removeChild(carritoElement)
+      })
+      carritoElement.appendChild(borrarElement);
+      carritoDeCompras.append(carritoElement);
+      })
     });
   });
-}crearTienda()
+}crearTienda() 
 
 
-/* boton.addEventListener("click", ()=>{
-  let carrito= document.createElement("div");
-  let nombreL = libros.map(elemento => elemento.nombre);
-  let precioL= libros.map(elemento => elemento.precio);
-  carrito.innerHTML= `<h3 style="color: brown">${nombreL}.........${precioL}`
-  carritoDeCompras.append(carrito)
+
+/* let totalElement= document.createElement("button");
+totalElement.className= "botonComprar";
+totalElement.innerText= "Total";
+totalElement.addEventListener("click", ()=>{
+const sum = carrito.map(e => e.precio).reduce((prev, curr) => prev + curr, 0);
+  let total= document.createElement("div");
+  total.innerText= `${sum}`;
+  total.className= "form-control";
 })
-  } */
-      
+carritoDeCompras.appendChild(totalElement)
+ */
 
+//Hola!! se me está complicando para poder sumar los resultados de los libros. quiero crear un boton
+//para dar con el total pero se lo ejecuto fuera de la función crearTienda, no reconoce al array carrito
+//Y no consigo hacer que se sumen por cada valor como hice abajo con 
+// const sum = carrito.map(e => e.precio).reduce((acum, elemento)=> acum + elemento, 0);
 
-
-
- /*   function buscador(){
-    const bus= document.getElementById("buscarTitulo");
-    bus.addEventListener("keyup", ()=>{
-        const busqueda= bus.value;
-        if(busqueda == undefined){
-          crearTienda(libros)
-        }else if (busqueda == ``){
-          let titulo= libros.filter(elemento => elemento.nombre.startsWith(busqueda.toUpperCase()));
-          crearTienda(titulo)
-        }
-        })
-    }buscador()*/
-  
-//Hola!! acá quise hacer que los elementos se buscaran, pero me aparecen varias tarjetas a la vez
-//y no las puedo borrar. En el after hiciste eso epro con un innerHTML vacío. No sé si tengo que 
-//cambiar la forma en la que hago la card o se para tener el innerHTML vacío o si hay alguna otra forma
 
 
 
@@ -105,7 +102,7 @@ function suscribirse(){
     const susMail= document.getElementById("susMail");
     let botonSus= document.getElementById("botonSuscripcion");
     const susText= document.getElementById("susText")
-    botonSus.addEventListener("click", (e)=>{
+    botonSus.addEventListener("submit", (e)=>{
        e.preventDefault();
         if(susNombre.value.length == 0){
           susText.innerHTML= `*Escriba su nombre`
@@ -128,7 +125,7 @@ function contacto(){
   const formText= document.getElementById("formText");
   const botonSus= document.getElementById("botonContacto");
   const textContacto= document.getElementById("textContacto");
-  botonSus.addEventListener("click", (e)=>{
+  botonSus.addEventListener("submit", (e)=>{
     e.preventDefault();
        if(formText.value.length < 50){
         textContacto.innerHTML=`*El mensaje debe tener por lo menos 50 caracteres`
@@ -181,6 +178,7 @@ switch (opcion) {
 
         let elegir = prompt(`Ingrese el nombre del libro que desea comprar o "esc" para salir`).toUpperCase();
         const comprar = [];
+        console.log(comprar)
       while (elegir != 'ESC') {
           comprar.push(libros.find(elemento => elemento.nombre == elegir));
           elegir = prompt(`Ingrese el nombre del libro que desea comprar o "esc" para salir`).toUpperCase();
@@ -191,8 +189,8 @@ switch (opcion) {
            console.log(precios[i]);
        }
 
-       function suma(){
-         let precio= comprar.map(elemento => elemento.precio);
+       function suma(place){
+         let precio= place.map(elemento => elemento.precio);
          let sumar= precio.reduce((acum, elemento)=> acum + elemento, 0)
          console.log(sumar)
 
@@ -262,7 +260,7 @@ switch (opcion) {
 
 
 
-/*    function crearTienda(){
+/*  function crearTienda(){
   libros.forEach((libro)=>{
   let card = document.createElement("div");
     card.className= "card"; 
@@ -283,21 +281,42 @@ switch (opcion) {
     boton.className = "botonComprar";
     boton.innerText = "Agregar al carrito";
     cardImg.appendChild(boton);
-    
-    let carrito = [];
 
-   boton.addEventListener("click", () => {
-     let carritoDeCompras= document.getElementById("carritoDeCompras");
-     carritoDeCompras.append(carrito);
-      carrito.push(
-        `nombre: ${libro.nombre}, precio: ${libro.precio},`
-      );
-      carritoDeCompras.append(carrito);
+
+    boton.addEventListener("click", ()=>{
+      
+      let carritoDeCompras= document.getElementById("carritoDeCompras");
+      let carritoElement= document.createElement("div");
+      let borrarElement= document.createElement("button");
+      carritoElement.className= "carritoElement"
+      carritoElement.innerHTML= `<div>${libro.nombre}</div><div>$${libro.precio}</div>`
+      borrarElement.className="borrar";
+      borrarElement.innerHTML= `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+      <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+      <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+      </svg>`;
+      borrarElement.addEventListener("click", ()=>{
+        carritoElement.parentNode.removeChild(carritoElement)
+      })
+      carritoElement.appendChild(borrarElement);
+      carritoDeCompras.append(carritoElement); 
+
+
+
+ 
+
+      const carrito = [];
+      console.log(carrito)
+      carrito.push({precio: libro.precio, nombre: libro.nombre})   
     });
   });
 }crearTienda()   */
 
 
 
-/* let carritoDeCompras= document.getElementById("carritoDeCompras");
-carritoDeCompras.innerHTML="hola"; */
+
+
+
+
+
+ 
