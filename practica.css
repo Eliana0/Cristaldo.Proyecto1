@@ -1,4 +1,4 @@
-  body{
+body{
   box-sizing: border-box;
   padding: 0%;
   margin: 0%;
@@ -42,6 +42,13 @@ header .buscador input{
 }
 header .buscador input::placeholder{
   color: rgba(0, 0, 0, 0.589);
+}
+.lupa{
+  background: transparent;
+  border: none;
+}
+.lupa:hover{
+  color: white;
 }
 
 
@@ -217,5 +224,4 @@ footer h2 {
     width: 50%;
   }
 }  
-
 

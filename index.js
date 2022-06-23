@@ -26,51 +26,117 @@ console.table(libros);
 
 
 
-function crearTienda(){
-  libros.forEach((libro)=>{
-  let card = document.createElement("div");
+function crearTienda(array){    
+    array.forEach((e)=>{
+    let card = document.createElement("div");
     card.className= "card"; 
     tienda.append(card) 
     let cardImg = document.createElement("div");
     cardImg.className= "img-box";
-    cardImg.innerHTML= `<img src="${libro.img}" class="card-img-top" id="imagen">`;
+    cardImg.innerHTML= `<img src="${e.img}" class="card-img-top" id="imagen">`;
     card.append(cardImg); 
     let cardBody= document.createElement("div");
     cardBody.className= "card-body"
     cardBody.innerHTML=`
-                        <h1 id="libroTitulo">${libro.nombre}</h1>
-                        <h2 id="libroPrecio">$${libro.precio}</h2>
-                        <b>${libro.genero}</b>
-                        <p>${libro.descripcion}</p><br>`;
+                      <h1 id="libroTitulo">${e.nombre}</h1>
+                      <h2 id="libroPrecio">$${e.precio}</h2>
+                      <b>${e.genero}</b>
+                      <p>${e.descripcion}</p><br>`;
     card.appendChild(cardBody);
     let boton = document.createElement(`button`);
     boton.className = "botonComprar";
     boton.innerText = "Agregar al carrito";
     cardImg.appendChild(boton);
-
-
+    
     boton.addEventListener("click", ()=>{
       const carrito = [];
-      carrito.push({precio: libro.precio, nombre: libro.nombre})   
+      carrito.push({precio: e.precio, nombre: e.nombre})   
       carrito.forEach((e)=>{
-      let carritoDeCompras= document.getElementById("carritoDeCompras");
-      let carritoElement= document.createElement("div");
-      let borrarElement= document.createElement("button");
-      carritoElement.className= "carritoElement"
-      carritoElement.innerHTML= `<div>${e.nombre}</div><div>$${e.precio}</div>`
-      borrarElement.className="borrar";
-      borrarElement.innerHTML= `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-      <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-    </svg>`;
-      borrarElement.addEventListener("click", ()=>{
-        carritoElement.parentNode.removeChild(carritoElement)
-      })
-      carritoElement.appendChild(borrarElement);
-      carritoDeCompras.append(carritoElement);
+        let carritoDeCompras= document.getElementById("carritoDeCompras");
+        let carritoElement= document.createElement("div");
+        let borrarElement= document.createElement("button");
+        carritoElement.className= "carritoElement"
+        carritoElement.innerHTML= `<div>${e.nombre}</div><div>$${e.precio}</div>`
+        borrarElement.className="borrar";
+        borrarElement.innerHTML= `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+        </svg>`;
+        borrarElement.addEventListener("click", ()=>{
+          carritoElement.parentNode.removeChild(carritoElement);
+        })
+        carritoElement.appendChild(borrarElement);
+        carritoDeCompras.append(carritoElement);
+        /*       let precio= carrito.map(e => e.precio)
+        let sumar= precio.reduce((acum, elemento)=> acum + elemento, 0)
+        console.log(sumar) */
       })
     });
   });
-}crearTienda() 
+}crearTienda(libros) 
+
+
+
+
+
+/* const buscadorInput= document.getElementById("buscadorInput");
+buscadorInput.addEventListener("keyup", ()=>{
+  let filter= buscadorInput.value.toUpperCase();
+  let nombre= libros.filter(elemento => elemento.nombre.startsWith(filter));
+  if(filter !== nombre){
+    card.parentNode.removeChild(card);
+  }
+}) */
+
+
+
+
+console.log(propiedades)
+const propiedades= [];
+const lupa= document.getElementsByClassName("lupa")
+const buscadorTitulo= document.getElementById("buscarTitulo")
+buscadorTitulo.addEventListener("keyup", ()=>{
+  let filter= buscadorTitulo.value.toUpperCase();
+  let nombre= libros.filter(elemento => elemento.nombre.startsWith(filter));
+  propiedades.push(nombre)
+  
+  
+  
+  
+  propiedades.forEach((e)=>{
+    let card = document.createElement("div");
+    card.className= "card"; 
+    tienda.append(card) 
+    let cardImg = document.createElement("div");
+    cardImg.className= "img-box";
+    cardImg.innerHTML= `<img src="${e.img}" class="card-img-top" id="imagen">`;
+    card.append(cardImg); 
+    let cardBody= document.createElement("div");
+    cardBody.className= "card-body"
+    cardBody.innerHTML=`
+    <h1 id="libroTitulo">${e.nombre}</h1>
+    <h2 id="libroPrecio">$${e.precio}</h2>
+    <b>${e.genero}</b>
+    <p>${e.descripcion}</p><br>`;
+    card.appendChild(cardBody);
+    let boton = document.createElement(`button`);
+    boton.className = "botonComprar";
+    boton.innerText = "Agregar al carrito";
+    cardImg.appendChild(boton);
+    
+    carritoElement.appendChild(borrarElement);
+    carritoDeCompras.append(carritoElement);
+  }) 
+  }) 
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -86,10 +152,8 @@ const sum = carrito.map(e => e.precio).reduce((prev, curr) => prev + curr, 0);
 carritoDeCompras.appendChild(totalElement)
  */
 
-//Hola!! se me está complicando para poder sumar los resultados de los libros. quiero crear un boton
-//para dar con el total pero se lo ejecuto fuera de la función crearTienda, no reconoce al array carrito
-//Y no consigo hacer que se sumen por cada valor como hice abajo con 
-// const sum = carrito.map(e => e.precio).reduce((acum, elemento)=> acum + elemento, 0);
+
+
 
 
 
@@ -145,7 +209,7 @@ contacto()
 
 
 
-
+ 
     let opcion= Number(prompt("*1 buscar libros *2 comprar *3 solo el propietario"));
   
 switch (opcion) {
@@ -248,6 +312,10 @@ switch (opcion) {
         }
       }
     } 
+
+
+
+
 
 
 
