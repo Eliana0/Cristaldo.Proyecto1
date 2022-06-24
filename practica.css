@@ -22,35 +22,6 @@ header{
   box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
 }
 
-header .buscador{
-  display: flex;
-  align-self: flex-end;
-  padding: 2%;
-  color: black;
-}
-
-header .buscador input{
-  height: 30px;
-  width: 60%;
-  background: transparent;
-  border: transparent;
-  border-bottom: 1px solid black;
-  outline: none;
-  display: flex;
-  align-self: flex-start;
-  font-size: 100%;
-}
-header .buscador input::placeholder{
-  color: rgba(0, 0, 0, 0.589);
-}
-.lupa{
-  background: transparent;
-  border: none;
-}
-.lupa:hover{
-  color: white;
-}
-
 
 /*tienda*/
 
@@ -61,6 +32,11 @@ header .buscador input::placeholder{
    margin-top: 10%;
    color:rgba(211, 28, 28, 0.72);
    font-size: 400%;
+}
+
+
+.buscador{
+  color: black;
 }
 
  #galeria{
