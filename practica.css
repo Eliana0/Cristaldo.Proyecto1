@@ -140,6 +140,10 @@ header .buscador input::placeholder{
   align-self: center;
 }
 
+#total{
+  color:red;
+}
+
 /*form*/
 .form{
   display: grid;

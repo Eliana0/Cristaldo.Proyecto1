@@ -26,83 +26,21 @@ console.table(libros);
 
 
 
+const precios= []; 
+//precios.reduce((a, b) => a + b, 0);
+suma= precios.reduce((prev, curr) => prev + curr, 0);
+console.log(suma)
+
+
+/* precios.reduce((a, b) => a + b, 0);
+console.log(precios)
+ */
+
+
+
+
 function crearTienda(array){    
-    array.forEach((e)=>{
-    let card = document.createElement("div");
-    card.className= "card"; 
-    tienda.append(card) 
-    let cardImg = document.createElement("div");
-    cardImg.className= "img-box";
-    cardImg.innerHTML= `<img src="${e.img}" class="card-img-top" id="imagen">`;
-    card.append(cardImg); 
-    let cardBody= document.createElement("div");
-    cardBody.className= "card-body"
-    cardBody.innerHTML=`
-                      <h1 id="libroTitulo">${e.nombre}</h1>
-                      <h2 id="libroPrecio">$${e.precio}</h2>
-                      <b>${e.genero}</b>
-                      <p>${e.descripcion}</p><br>`;
-    card.appendChild(cardBody);
-    let boton = document.createElement(`button`);
-    boton.className = "botonComprar";
-    boton.innerText = "Agregar al carrito";
-    cardImg.appendChild(boton);
-    
-    boton.addEventListener("click", ()=>{
-      const carrito = [];
-      carrito.push({precio: e.precio, nombre: e.nombre})   
-      carrito.forEach((e)=>{
-        let carritoDeCompras= document.getElementById("carritoDeCompras");
-        let carritoElement= document.createElement("div");
-        let borrarElement= document.createElement("button");
-        carritoElement.className= "carritoElement"
-        carritoElement.innerHTML= `<div>${e.nombre}</div><div>$${e.precio}</div>`
-        borrarElement.className="borrar";
-        borrarElement.innerHTML= `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-        </svg>`;
-        borrarElement.addEventListener("click", ()=>{
-          carritoElement.parentNode.removeChild(carritoElement);
-        })
-        carritoElement.appendChild(borrarElement);
-        carritoDeCompras.append(carritoElement);
-        /*       let precio= carrito.map(e => e.precio)
-        let sumar= precio.reduce((acum, elemento)=> acum + elemento, 0)
-        console.log(sumar) */
-      })
-    });
-  });
-}crearTienda(libros) 
-
-
-
-
-
-/* const buscadorInput= document.getElementById("buscadorInput");
-buscadorInput.addEventListener("keyup", ()=>{
-  let filter= buscadorInput.value.toUpperCase();
-  let nombre= libros.filter(elemento => elemento.nombre.startsWith(filter));
-  if(filter !== nombre){
-    card.parentNode.removeChild(card);
-  }
-}) */
-
-
-
-
-console.log(propiedades)
-const propiedades= [];
-const lupa= document.getElementsByClassName("lupa")
-const buscadorTitulo= document.getElementById("buscarTitulo")
-buscadorTitulo.addEventListener("keyup", ()=>{
-  let filter= buscadorTitulo.value.toUpperCase();
-  let nombre= libros.filter(elemento => elemento.nombre.startsWith(filter));
-  propiedades.push(nombre)
-  
-  
-  
-  
-  propiedades.forEach((e)=>{
+  array.forEach((e)=>{
     let card = document.createElement("div");
     card.className= "card"; 
     tienda.append(card) 
@@ -122,11 +60,47 @@ buscadorTitulo.addEventListener("keyup", ()=>{
     boton.className = "botonComprar";
     boton.innerText = "Agregar al carrito";
     cardImg.appendChild(boton);
+
+    boton.addEventListener("click", ()=>{
+      precios.push(e.precio)
+      const carrito = [];
+      carrito.push({precio: e.precio, nombre: e.nombre});
+
+      carrito.forEach((e)=>{
+        let carritoDeCompras= document.getElementById("carritoDeCompras");
+        let carritoElement= document.createElement("div");
+        let borrarElement= document.createElement("button");
+        carritoElement.className= "carritoElement"
+        carritoElement.innerHTML= `<div>${e.nombre}</div><div>$${e.precio}</div>`
+        borrarElement.className="borrar";
+        borrarElement.innerHTML= `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+        </svg>`;
+        borrarElement.addEventListener("click", ()=>{
+          carritoElement.parentNode.removeChild(carritoElement);
+        })
+        carritoElement.appendChild(borrarElement);
+        carritoDeCompras.append(carritoElement);
+      }); 
+      });
+  });
+}crearTienda(libros) 
+
+
+/*function total(){
+/*   const sum = precios.reduce((a, b) => a + b, 0);
+  console.log(sum) */
+
+
+
+/* let total= document.getElementById("total");
+  total.innerHTML=`Total: ${sum}`; 
+
+}total() */
     
-    carritoElement.appendChild(borrarElement);
-    carritoDeCompras.append(carritoElement);
-  }) 
-  }) 
+
+      
+      //precios.reduce((acum, elemento)=> acum + elemento, 0)
 
 
 
@@ -137,22 +111,16 @@ buscadorTitulo.addEventListener("keyup", ()=>{
 
 
 
-
-
-
-/* let totalElement= document.createElement("button");
-totalElement.className= "botonComprar";
-totalElement.innerText= "Total";
-totalElement.addEventListener("click", ()=>{
-const sum = carrito.map(e => e.precio).reduce((prev, curr) => prev + curr, 0);
-  let total= document.createElement("div");
-  total.innerText= `${sum}`;
-  total.className= "form-control";
-})
-carritoDeCompras.appendChild(totalElement)
- */
-
-
+/* console.log(propiedades)
+const propiedades= [];
+const lupa= document.getElementsByClassName("lupa")
+const buscadorTitulo= document.getElementById("buscarTitulo")
+buscadorTitulo.addEventListener("keyup", ()=>{
+  let filter= buscadorTitulo.value.toUpperCase();
+  let nombre= libros.filter(elemento => elemento.nombre.startsWith(filter));
+  propiedades.push(nombre)
+  
+  })  */
 
 
 
@@ -253,8 +221,8 @@ switch (opcion) {
            console.log(precios[i]);
        }
 
-       function suma(place){
-         let precio= place.map(elemento => elemento.precio);
+       function suma(comprar){
+         let precio= comprar.map(elemento => elemento.precio);
          let sumar= precio.reduce((acum, elemento)=> acum + elemento, 0)
          console.log(sumar)
 
