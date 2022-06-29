@@ -22,6 +22,35 @@ header{
   box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
 }
 
+header .buscador{
+  display: flex;
+  align-self: flex-end;
+  padding: 2%;
+  color: black;
+}
+
+header .buscador input{
+  height: 30px;
+  width: 60%;
+  background: transparent;
+  border: transparent;
+  border-bottom: 1px solid black;
+  outline: none;
+  display: flex;
+  align-self: flex-start;
+  font-size: 100%;
+}
+header .buscador input::placeholder{
+  color: rgba(0, 0, 0, 0.589);
+}
+.lupa{
+  background: transparent;
+  border: none;
+}
+.lupa:hover{
+  color: white;
+}
+
 
 /*tienda*/
 
@@ -108,7 +137,7 @@ header{
 }
 
 
-#carritoDeCompras .carritoElement div{
+/* #carritoDeCompras */ .carritoElement div{
   color: black;
   font-size: 150%;
   margin: 1%;
@@ -116,9 +145,32 @@ header{
   align-self: center;
 }
 
-#total{
-  color:red;
+
+
+/*TOTAL*/
+ #total{
+   margin: 5%;
+} 
+.contentFinalizar{
+  display: flex;
+  justify-content: center;
 }
+.botonFinalizar{
+  width: 50%;
+  height: 42px;
+  text-align: center;
+  background-color: rgba(211, 28, 28, 0.72);
+  color: black;
+  border: none;
+  font-size: larger;
+  justify-content: center;
+}
+.botonFinalizar:hover{
+  background-color: rgba(211, 28, 28, 0.451);
+  color: rgba(255, 255, 255, 0.616);
+} 
+
+
 
 /*form*/
 .form{
@@ -204,4 +256,3 @@ footer h2 {
     width: 50%;
   }
 }  
-
