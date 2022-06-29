@@ -34,8 +34,6 @@ const total = document.querySelector(`#total`);
 
 
 
-
-
 /* const buscador= document.querySelector(`#buscarTitulo`)
 const resultadoBuscador= document.querySelector(`#resultadoBuscador`)
 const lupa= document.querySelector(`.lupa`) */
@@ -101,10 +99,19 @@ function crearTienda(array){
       </svg>`;
       borrarElement.addEventListener("click", ()=>{
         carritoElement.parentNode.removeChild(carritoElement)
+
+          let nombre= libro.nombre;
+          let buscarSustraer= carrito.find(libro => libro.nombre == nombre);
+          let numBuscar= carrito.indexOf(buscarSustraer);
+          carrito.splice(numBuscar ,1);
+
+          if(total.innerHTML != ``){
+            total.innerHTML= ``;
+          }
       })
       carritoElement.appendChild(borrarElement);
       carritoDeCompras.append(carritoElement); 
- 
+      
       carrito.push({precio: libro.precio, nombre: libro.nombre})   
     });
   });
@@ -118,6 +125,11 @@ function crearTienda(array){
     let finalizar = document.getElementById(`finalizar`)
     finalizar.className= "botonFinalizar"
     finalizar.addEventListener(`click`, ()=>{ 
+
+      if(total.innerHTML != ``){
+        total.innerHTML= ``;
+      }
+
       let sumar = carrito.reduce((acc, e) => acc + e.precio, 0);
       let valor = document.createElement("div");
 
@@ -186,9 +198,9 @@ function crearTienda(array){
     let vaciarCarrito = document.getElementById(`vaciarCarrito`)
     vaciarCarrito.className= "botonFinalizar"
     vaciarCarrito.addEventListener(`click`, ()=>{ 
+      carrito = [];
       total.innerHTML= ``;
       carritoDeCompras.innerHTML= ``;
-      carrito = [];
     })
 }vaciarCarrito()
 
@@ -196,43 +208,80 @@ function crearTienda(array){
 
                       
   function suscribirse(){
-    const susNombre= document.getElementById("susNombre");
-    const susApellido= document.getElementById("susApellido");  
-    const susMail= document.getElementById("susMail");
+    const susText= document.getElementById("susText");
     let botonSus= document.getElementById("botonSuscripcion");
-    const susText= document.getElementById("susText")
-    botonSus.addEventListener("submit", (e)=>{
+    botonSus.addEventListener("click", (e)=>{
+      const susNombre= document.getElementById(`susNombre`).value.toUpperCase();
+      const susApellido= document.getElementById("susApellido").value.toUpperCase();  
+      const susMail= document.getElementById("susMail").value.toLowerCase();
+      console.log(susNombre)
        e.preventDefault();
-        if(susNombre.value.length == 0){
+        if(susNombre.length == 0){
           susText.innerHTML= `*Escriba su nombre`
-        }else if(susMail.value.length == 0){
+        }else if(susMail.length == 0){
           susText.innerHTML= `*Escriba su mail`
         }else{
-          susText.innerHTML=`¡¡Felisitaciones!! ${susNombre.value} Te has suscripto a la página de libros de Stephen king`
+
+          function guardarStorage(){
+            let suscriptor= {
+              nombre: susNombre,
+              apellido: susApellido,
+              mail: susMail
+            }
+            localStorage.setItem("suscriptor", JSON.stringify(suscriptor));
+          }guardarStorage
+
+          function verDatosSuscriptor(){
+            if(localStorage.getItem("suscriptor")){
+              let suscriptor= localStorage.getItem("suscriptor");
+              console.log("suscriptor");
+            }
+          }verDatosSuscriptor()
+
+          susText.innerHTML=`¡¡Felisitaciones!! ${susNombre} Te has suscripto a la página de libros de Stephen king`
         }
       })
       }
 suscribirse()  
 
+//Recuperar datos previos
+/* let usuario;
+let use= JSON.stringify(localStorage.getItem(`usuario`))
+//Si había algo almacenado, lo recupero. Si no, le paso un ingreso
+if (use){
+  usuario = use
+}else{
+  usuario = prompt(`ingrese su nombre de usuairo`)
+}
+
+//Recuparar datos previos
+carrito= []
+let carri= JSON.stringify(localStorage.getItem(`carrito`))
+//inicializo mi carrito con un array vacio o con el registro que haya quedado en LS
+if(carri){
+  carrito = carri
+} */
+//Funicon que redendiza el carrito
+
 
 
 function contacto(){
-  const formNombre= document.getElementById("formNombre");
-  const formApellido= document.getElementById("formApellido");  
-  const formMail= document.getElementById("formMail"); 
-  const formNumero= document.getElementById("formNumero");
-  const formText= document.getElementById("formText");
   const botonSus= document.getElementById("botonContacto");
   const textContacto= document.getElementById("textContacto");
-  botonSus.addEventListener("submit", (e)=>{
+  botonSus.addEventListener("click", (e)=>{
     e.preventDefault();
-       if(formText.value.length < 50){
-        textContacto.innerHTML=`*El mensaje debe tener por lo menos 50 caracteres`
-      }else if(formNombre.value.length == 0){
+    const formNombre= document.getElementById("formNombre").value.toUpperCase();
+    const formApellido= document.getElementById("formApellido").value.toUpperCase();  
+    const formMail= document.getElementById("formMail").value.toLowerCase(); 
+    const formNumero= document.getElementById("formNumero");
+    const formText= document.getElementById("formText").value;
+       if(formText.length < 50){
+        textContacto.innerHTML=`*El mensaje debe tener por lo menos 50 caracteres`;
+      }else if(formNombre.length == 0){
         textContacto.innerHTML=`*Escriba un nombre`
-      }else if(formApellido.value.length == 0){
+      }else if(formApellido.length == 0){
         textContacto.innerHTML=`*Escriba un apellido`
-      }else if(formMail.value.length == 0){
+      }else if(formMail.length == 0){
         textContacto.innerHTML=`*Escriba un mail`
       }
       else{
