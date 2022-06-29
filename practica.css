@@ -164,6 +164,7 @@ header .buscador input::placeholder{
   border: none;
   font-size: larger;
   justify-content: center;
+  margin: 2px;
 }
 .botonFinalizar:hover{
   background-color: rgba(211, 28, 28, 0.451);

@@ -30,15 +30,19 @@ console.table(libros);
 let carrito = [];
 const carritoDeCompras = document.querySelector(`#carritoDeCompras`);
 const total = document.querySelector(`#total`);
-const buscador= document.querySelector(`#buscarTitulo`)
+
+
+
+
+
+
+/* const buscador= document.querySelector(`#buscarTitulo`)
 const resultadoBuscador= document.querySelector(`#resultadoBuscador`)
-const lupa= document.querySelector(`.lupa`)
+const lupa= document.querySelector(`.lupa`) */
 
 
 
-
-
-const busqueda= [];
+/* const busqueda= [];
 console.log(busqueda)
 
 function buscar(){
@@ -55,53 +59,7 @@ function buscar(){
         }
       })
 }
-buscar()
-
-
-
-
-
-
-
-
-busqueda.forEach((e)=>{
-  console.log(e)
-  let card = document.createElement("div");
-    card.className= "card"; 
-    tienda.append(card) 
-    let cardImg = document.createElement("div");
-    cardImg.className= "img-box";
-    cardImg.innerHTML= `<img src="${libro.img}" class="card-img-top" id="imagen">`;
-    card.append(cardImg); 
-    let cardBody= document.createElement("div");
-    cardBody.className= "card-body"
-    cardBody.innerHTML=`
-                        <h1 id="libroTitulo">${libro.nombre}</h1>
-                        <h2 id="libroPrecio">$${libro.precio}</h2>
-                        <b>${libro.genero}</b>
-                        <p>${libro.descripcion}</p><br>`;
-    card.appendChild(cardBody);
-    let boton = document.createElement(`button`);
-    boton.className = "botonComprar";
-    boton.innerText = "Agregar al carrito";
-    cardImg.appendChild(boton);
-
-})
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+buscar() */
 
 
 
@@ -150,7 +108,7 @@ function crearTienda(array){
       carrito.push({precio: libro.precio, nombre: libro.nombre})   
     });
   });
-}/* crearTienda(libros)  */  
+} crearTienda(libros) 
 
 
 
@@ -222,6 +180,17 @@ function crearTienda(array){
   }agregaCarrito()
     
 
+
+
+  function vaciarCarrito() {
+    let vaciarCarrito = document.getElementById(`vaciarCarrito`)
+    vaciarCarrito.className= "botonFinalizar"
+    vaciarCarrito.addEventListener(`click`, ()=>{ 
+      total.innerHTML= ``;
+      carritoDeCompras.innerHTML= ``;
+      carrito = [];
+    })
+}vaciarCarrito()
 
 
 
