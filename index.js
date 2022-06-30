@@ -314,42 +314,36 @@ if (password.value === dueño){
     let agregarElemento= document.createElement("button");
     agregarElemento.innerHTML= 'Agregar libro';
     agregarElemento.addEventListener("click", ()=>{
-     
-      let botonBorrar=  document.createElement("button");
-      let newLibro= document.createElement("div");
-      let botonPush= document.createElement("button")
-      botonBorrar.innerHTML= `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-      <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-    </svg>`
-      newLibro.innerHTML= `
-      <div><input type="text" placeholder="Título" id="newLibroNombre"></div>
-      <div><input type="number" placeholder="Precio" id="newLibroPrecio"></div>
-      <div><input type="text" placeholder="Genero" id="newLibroGenero"></div>
-      <div><input type="text" placeholder="Imágen" id="newLibroImg"></div>
-      <div><input type="text" placeholder="descripcion" id="newLibroDescripcion"></div>`;
-      botonPush.innerText= `Guardar`;
-      botonPush.addEventListener("click", ()=>{
-        let newLibroNombre= document.getElementById("newLibroNombre").value.toUpperCase();
-        let newLibroPrecio= document.getElementById("newLibroPrecio").value;
-        let newLibroGenero= document.getElementById("newLibroGenero").value.toUpperCase();
-        let newLibroImg= document.getElementById("newLibroImg").value;
-        let newLibroDescripcion= document.getElementById("newLibroDescripcion").value;
-  
-        let libros= JSON.parse(localStorage.getItem("libros"));
-        libros.push({nombre: newLibroNombre, precio: newLibroPrecio, genero: newLibroGenero, img: newLibroImg, descripcion: newLibroDescripcion});
-        localStorage.setItem("libros", JSON.stringify(libros)); 
-      })
-      botonBorrar.addEventListener("click", ()=>{
-        agregar.innerHTML= '';
-      })
-  
-    agregar.appendChild(botonBorrar)
-    agregar.appendChild(newLibro)
-    agregar.appendChild(botonPush)
+      addLibro()
     })
   
     let sustraerElemento= document.createElement("button");
     sustraerElemento.innerHTML= 'Quitar libro';
+    sustraerElemento.addEventListener("click", ()=>{
+      let sustraer= document.getElementById("sustraer");
+      
+      let titulo= document.createElement("div");
+      let input= document.createElement("div");
+      let botonSustraer= document.createElement("button");
+      
+      titulo.innerHTML= '<p>Escriba el libro que desea sustraer</p>';
+      input.innerHTML= `<div><input type="text" placeholder="Título" id="libroASustraer"></div>`;
+      botonSustraer.innerHTML= `Eliminar`;
+      
+      botonSustraer.addEventListener("click", ()=>{
+        let libros= JSON.parse(localStorage.getItem("libros"));
+        let libroASustraer= document.getElementById("libroASustraer").value.toUpperCase();
+        let buscarSustraer= libros.find(elemento => elemento.nombre == libroASustraer);
+        let numBuscar= libros.indexOf(buscarSustraer);
+        
+        libros.splice(numBuscar ,1);
+        localStorage.setItem("libros", JSON.stringify(libros));
+      })
+
+      sustraer.appendChild(titulo);
+      sustraer.appendChild(input);
+      sustraer.appendChild(botonSustraer);
+    })
     
     let modificarElemento= document.createElement("button");
     modificarElemento.innerHTML= 'Modificar';
@@ -362,25 +356,13 @@ if (password.value === dueño){
  
 }
  })
-}modificar()
+}
+modificar()
  
 
 
-
-
- /*    case 1:
-        function agregarElemento(){
-          let elementos= parseInt(prompt(`¿Cuantos elementos desea agregar a la tienda?`));
-          let libros= JSON.parse(localStorage.getItem("libros"));
-          for (i=0; i<elementos; i++){
-            libros.push({nombre: prompt("Ingresa el nombre del libro que desea agregar").toUpperCase(), precio: Number(prompt("Ingrese el precio del libro")), genero: prompt("Ingrese el genero del libro").toUpperCase(), img: prompt("Ingrese la imagen"), descripcion: prompt("ingrese la descripción")});
-          }
-          localStorage.setItem("libros", JSON.stringify(libros));
-        }agregarElemento()
-
-        break;
-
-        case 2: 
+/*  
+   case 2: 
         function sustraerElemento(){
           let elementos= parseInt(prompt(`¿Cuantos elementos desea sustraer de la tienda?`));
           let libros= JSON.parse(localStorage.getItem("libros"));
@@ -393,7 +375,7 @@ if (password.value === dueño){
           localStorage.setItem("libros", JSON.stringify(libros));
         }sustraerElemento()
 
-        break;
+      break;
 
         case 3:
           let modificarElemento=  parseInt(prompt(`*1 Modificar título *2 Modificar precio *3 Modificar descripción *4 Modificar imágen *5 Modificar género`));
@@ -481,53 +463,52 @@ if (password.value === dueño){
 */
 
 
-/* 
-function agregar(){
-  let agregarElemento= document.createElement("button");
-  agregarElemento.innerHTML= 'Agregar libro';
-  agregarElemento.addEventListener("click", ()=>{
-   
-    let botonBorrar=  document.createElement("button");
-    let newLibro= document.createElement("div");
-    let botonPush= document.createElement("button")
-    botonBorrar.innerHTML= `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-    <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-  </svg>`
-    newLibro.innerHTML= `
-    <div><input type="text" placeholder="Título" id="newLibroNombre"></div>
-    <div><input type="number" placeholder="Precio" id="newLibroPrecio"></div>
-    <div><input type="text" placeholder="Genero" id="newLibroGenero"></div>
-    <div><input type="text" placeholder="Imágen" id="newLibroImg"></div>
-    <div><input type="text" placeholder="descripcion" id="newLibroDescripcion"></div>`;
-    botonPush.innerText= `Guardar`;
-    botonPush.addEventListener("click", ()=>{
-      let newLibroNombre= document.getElementById("newLibroNombre").value.toUpperCase();
-      let newLibroPrecio= document.getElementById("newLibroPrecio").value;
-      let newLibroGenero= document.getElementById("newLibroGenero").value.toUpperCase();
-      let newLibroImg= document.getElementById("newLibroImg").value;
-      let newLibroDescripcion= document.getElementById("newLibroDescripcion").value;
 
-      let libros= JSON.parse(localStorage.getItem("libros"));
-      libros.push({nombre: newLibroNombre, precio: newLibroPrecio, genero: newLibroGenero, img: newLibroImg, descripcion: newLibroDescripcion});
-      localStorage.setItem("libros", JSON.stringify(libros)); 
-    })
-    botonBorrar.addEventListener("click", ()=>{
-      agregar.innerHTML= '';
-    })
 
-  agregar.appendChild(botonBorrar)
-  agregar.appendChild(newLibro)
-  agregar.appendChild(botonPush)
-  })
 
-  let sustraerElemento= document.createElement("button");
-  sustraerElemento.innerHTML= 'Quitar libro';
-  
-  let modificarElemento= document.createElement("button");
-  modificarElemento.innerHTML= 'Modificar';
-  
-  contenedorModificar.appendChild(agregarElemento)
-  contenedorModificar.appendChild(sustraerElemento)
-  contenedorModificar.appendChild(modificarElemento)
- /*  mainFloor.appendChild(contenedorModificar); */
-//  }  */
+
+
+
+
+
+
+
+
+
+
+
+
+function addLibro() {
+
+let botonBorrar=  document.createElement("button");
+let newLibro= document.createElement("div");
+let botonPush= document.createElement("button")
+botonBorrar.innerHTML= `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+<path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+</svg>`
+newLibro.innerHTML= `
+<div><input type="text" placeholder="Título" id="newLibroNombre"></div>
+<div><input type="number" placeholder="Precio" id="newLibroPrecio"></div>
+<div><input type="text" placeholder="Genero" id="newLibroGenero"></div>
+<div><input type="text" placeholder="Imágen" id="newLibroImg"></div>
+<div><input type="text" placeholder="descripcion" id="newLibroDescripcion"></div>`;
+botonPush.innerText= `Guardar`;
+botonPush.addEventListener("click", ()=>{
+  let newLibroNombre= document.getElementById("newLibroNombre").value.toUpperCase();
+  let newLibroPrecio= document.getElementById("newLibroPrecio").value;
+  let newLibroGenero= document.getElementById("newLibroGenero").value.toUpperCase();
+  let newLibroImg= document.getElementById("newLibroImg").value;
+  let newLibroDescripcion= document.getElementById("newLibroDescripcion").value;
+
+  let libros= JSON.parse(localStorage.getItem("libros"));
+  libros.push({nombre: newLibroNombre, precio: newLibroPrecio, genero: newLibroGenero, img: newLibroImg, descripcion: newLibroDescripcion});
+  localStorage.setItem("libros", JSON.stringify(libros)); 
+})
+botonBorrar.addEventListener("click", ()=>{
+  agregar.innerHTML= '';
+})
+
+agregar.appendChild(botonBorrar)
+agregar.appendChild(newLibro)
+agregar.appendChild(botonPush)
+}
