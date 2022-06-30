@@ -52,6 +52,7 @@ header .buscador input::placeholder{
 }
 
 
+
 /*tienda*/
 
 .titulo{
@@ -61,11 +62,6 @@ header .buscador input::placeholder{
    margin-top: 10%;
    color:rgba(211, 28, 28, 0.72);
    font-size: 400%;
-}
-
-
-.buscador{
-  color: black;
 }
 
  #galeria{
@@ -136,8 +132,7 @@ header .buscador input::placeholder{
   border: none;
 }
 
-
-/* #carritoDeCompras */ .carritoElement div{
+.carritoElement div{
   color: black;
   font-size: 150%;
   margin: 1%;
@@ -217,6 +212,13 @@ header .buscador input::placeholder{
   font-family: 'Times New Roman', Times, serif;
 }
 
+
+/*CONTRASEÑA*/
+
+.mainFloor{
+  display: flex;
+  justify-content: center;
+}
 
 
 /*FOOTER*/
