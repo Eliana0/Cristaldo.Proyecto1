@@ -1,4 +1,26 @@
 tienda = document.getElementById("galeria");
+/* const libros = [
+  {nombre: `IT`, precio: 6400, genero: "TERROR", img: `ima/IT.jpg`, descripcion: "It es un payaso malvado que vive bajo la ciudad de Derry y se alimenta del miedo de sus victimas. Sólo un grupo de niños unidos por la amistad podrán detenerlo."},
+  {nombre: `DESPUÉS`, precio: 4200, genero: "CRIMINAL, SUSPENSO", img: `ima/despues.jpg`, descripcion: "Cuando una inspectora le obliga a evitar el último atentado de un asesino, Jamie no tardará en descubrir que el precio que debe pagar por su poder tal vez es demasiado alto."}, 
+  {nombre: `EL RESPLANDOR`, precio: 3600, genero: "TERROR", img: `ima/EL_RESPLANDOR.jpg`, descripcion: "Jack es contratado para cuidar el hotel Overlook junto con su familia. Lo que no esperaban es que ese lugar despertará el resplandor de su hijo Danny."}, 
+  {nombre: `LA CÚPULA`, precio: 6500, genero: "CIENCIA FICCION", img: `ima/la-cupula-stephen-king.jpg`, descripcion: "Chester`s Mill es un pueblo normal hasta que un misterioso domo cae alrededor de él. Nadie puede entra... ni salir. Los ciudadanos deberán arreglarse por su cuenta."},
+  {nombre: `LA EXPEDICIÓN`, precio: 3600, genero: "RECOPILACION", img: `ima/LA_EXPEDICION.jpg`, descripcion: "Una recopilación de cuentos escritos por el indiscutido maestro del terror, Stephen King."},
+  {nombre: `OJOS DE FUEGO`, precio: 4200, genero: "CIENCIA FICCION", img: `ima/OJOS_DE_FUEGO.jpg`, descripcion: "Charly es una niña que, junto con su padre, debe escapar de la organización que años atrás experimentó con ellos y les dió sus poderes."},
+  {nombre: `EL UMBRAL DE LA NOCHE`, precio: 3700, genero: "RECOPILACION", img: "ima/el-umbral-de-la-noche-1.jpg", descripcion: "Aquellos que mueren rápidamente son el realidad los más afortunados, ya que para los supervivientes Desesperación se convertirá en el escenario de una horrenda pesadilla."},
+  {nombre: `EL VISITANTE`, precio: 4700, genero: "FANTASIA, TERROR", img: "ima/EL_VISITANTE.jpg", descripcion: "El detective Anderson no está satisfecho. Maitland parece un buen tipo, un ciudadano ejemplar, ¿acaso tiene dos caras? Y ¿cómo es posible que estuviera en dos sitios a la vez?"},
+  {nombre: `LA MILLA VERDE`, precio: 3500, genero: "FANTASIA, DRAMA", img: "ima/LA_MILLA_VERDE.jpg", descripcion: "La penitenciaría Could Mountain es donde los condenados esperan la muerte. Pero un día llega un preso peculiar."},
+  {nombre: `DESPUÉS DE MEDIANOCHE`, precio: 2800, genero: "RECOPILACION", img: "ima/despues-de-medianoche.jpg", descripcion: "Una recopilación de cuatro cuentos escritos por el indiscutido maestro del terror, Stephen King."},
+  {nombre: `CEMENTERIO DE ANIMALES`, precio: 3500, genero: "TERROR", img: "ima/cementerio-de-animales.jpg", descripcion: "Cuando el gato de la familia fallece en un accidente de carretera, es enterrado en un antiguo cementerio. Al otro día aparece vivo... pero no es el mismo."},
+  {nombre: `EL BAZAR DE LOS MALOS SUEÑOS`, precio: 3500, genero: "RECOPILACION", img: "ima/EL_BAZAR_DE_LOS_MALOS_SUEÑOS.jpg", descripcion: "Una recopilación de cuentos escritos por el indiscutido maestro del terror, Stephen King."},
+  {nombre: `QUIÉN PIERDE, PAGA`, precio: 3000, genero: "THRILLER CRIMINAL", img: "ima/QUIEN_PIERDE_PAGA.jpg", descripcion: "El asesinato del escritor John Rothstein, sus notas perdidas y la liberación de su asesino. Bill Hodges, gradualmente empieza a hacer parte de esta historia."},
+  {nombre: `LA TORMENTA DEL SIGLO`, precio: 4000, genero: "FANTASIA, CIENCIA FICCION", img: "ima/LA_TORMENTA_DEL_SIGLO.jpg", descripcion: "La llaman la tormenta del siglo. Los habitantes de la isla de Little Tall ya han sido testigos de las violentas tormentas, pero esta es distinta. Esta vez trae algo que nadie quiere ver..."},
+  {nombre: `RABIA`, precio: 2500, genero: "SUSPENSO, TERROR", img: "ima/Rabia-Richard-Bachman.jpg", descripcion: "Rabia nos relata la historia de un joven estudiante de preparatoria que causa un tiroteo en su escuela. Cuando sus compañeros escuchen lo que tiene para decir, se podrán ir."},
+  {nombre: `MISERY`, precio: 3000, genero: "SUSPENSO, TERROR", img: "ima/misery.webp", descripcion: "Durante un viaje, Paul Sheldon sufre un accidente de auto y es recogido por quién dice ser su admiradora numero uno: una enfermera acusada de asesinato."},
+  {nombre: `JOYLAND`, precio: 3000, genero: "TERROR", img: "ima/joyland.jpg", descripcion: "Dos amigos se unen para cumplir el sueño de ir al Joyland, un parque de diversiones que oculta una historia de fantasmas."},
+  {nombre: `LA MITAD OSCURA`, precio: 4500, genero: "RECOPILACION", img: "ima/LA_MITAD_OSCURA.jpg", descripcion: "Cuando el Alan Pangborn es acusado de asesinato, Thad quería afirmar su inocencia,¿cómo podía explicar que sus huellas aparecieran por toda la escena del crimen?."},
+  {nombre: `EL INSTITUTO`, precio: 3600, genero: "CIENCIA FICCION", img: "ima/The-Institute.jpg", descripcion: "Luke Ellis es un chico especial. Tiene un pequeño poder que otros ansían más que él y por el que asesinarán y harán lo que haga falta."},     
+  {nombre: `CHRISTINE`, precio: 2000, genero: "TERROR", img: "ima/CHRISTINE.jpg", descripcion: "Arnie Cunningham compra su primer auto. Pero, cuando la gente comienza a morir en sospechosos accidentes, no se puede negar la verdad: el auto está vivo."} 
+]; */
 
 
 let libros= JSON.parse(localStorage.getItem("libros"));
@@ -6,7 +28,12 @@ libros.sort((v1, v2) => v1.precio - v2.precio);
 console.table(libros);
 
 
-
+let n10= `10`;
+let n20= `20`;
+let n30= `30`;
+let porc10= 0.1;
+let porc20= 0.2;
+let porc30= 0.3;
 let carrito = [];
 let dueño = "";
 const carritoDeCompras = document.querySelector(`#carritoDeCompras`);
@@ -88,9 +115,7 @@ function crearTienda(array){
           let numBuscar= carrito.indexOf(buscarSustraer);
           carrito.splice(numBuscar ,1);
 
-          if(total.innerHTML != ``){
             total.innerHTML= ``;
-          }
       })
       carritoElement.appendChild(borrarElement);
       carritoDeCompras.append(carritoElement); 
@@ -109,9 +134,7 @@ function crearTienda(array){
     finalizar.className= "botonFinalizar"
     finalizar.addEventListener(`click`, ()=>{ 
 
-      if(total.innerHTML != ``){
         total.innerHTML= ``;
-      }
 
       let sumar = carrito.reduce((acc, e) => acc + e.precio, 0);
       let valor = document.createElement("div");
@@ -121,49 +144,13 @@ function crearTienda(array){
       total.appendChild(valor)
       
       if ((sumar >=3000)&&(sumar < 4000)){
-        let cardTop= document.createElement("div");
-        let cardFloor= document.createElement("div");
-        cardTop.className= "carritoElement";
-        cardFloor.className= "carritoElement";
-
-        let desc= Math.round(sumar * 0.1);
-        let round= Math.round(sumar-desc);
-
-        cardTop.innerHTML= `<div> -10% </div><div> $${desc} </div>`
-        cardFloor.innerHTML= `<div> Total </div><div> $${round} </div>`;
-
-        total.appendChild(cardTop);
-        total.appendChild(cardFloor);
+        porcentaje(n10, porc10, sumar)
       }  
       else if((sumar >=4000)&&(sumar < 5000)){
-        let cardTop= document.createElement("div");
-        let cardFloor= document.createElement("div");
-        cardTop.className= "carritoElement";
-        cardFloor.className= "carritoElement";
-
-        let desc= Math.round(sumar * 0.2);
-        let round= Math.round(sumar-desc);
-
-        cardTop.innerHTML= `<div> -20% </div><div> $${desc} </div>`
-        cardFloor.innerHTML= `<div> Total </div><div> $${round} </div>`;
-
-        total.appendChild(cardTop);
-        total.appendChild(cardFloor);
+        porcentaje(n20, porc20, sumar)
       }
       else if(sumar >=5000){
-        let cardTop= document.createElement("div");
-        let cardFloor= document.createElement("div");
-        cardTop.className= "carritoElement";
-        cardFloor.className= "carritoElement";
-
-        let desc= Math.round(sumar * 0.3);
-        let round= Math.round(sumar-desc);
-
-        cardTop.innerHTML= `<div> -30% </div><div> $${desc} </div>`
-        cardFloor.innerHTML= `<div> Total </div><div> $${round} </div>`;
-
-        total.appendChild(cardTop);
-        total.appendChild(cardFloor);
+        porcentaje(n30, porc30, sumar)
       }
       else{
         let cardFloor= document.createElement("div");
@@ -173,7 +160,6 @@ function crearTienda(array){
       }
     }) 
   }agregaCarrito()
-    
 
 
 
@@ -199,9 +185,10 @@ function crearTienda(array){
       const susMail= document.getElementById("susMail").value.toLowerCase();
       console.log(susNombre)
        e.preventDefault();
-        if(susNombre.length == 0){
-          susText.innerHTML= `*Escriba su nombre`
-        }else if(susMail.length == 0){
+
+       if (susNombre.length == 0){
+         susText.innerHTML= `*Escriba su nombre`
+      } else if(susMail.length == 0){
           susText.innerHTML= `*Escriba su mail`
         }else{
 
@@ -283,9 +270,7 @@ contacto()
 let botonModificar= document.getElementById("botonModificar");
 botonModificar.addEventListener("click", ()=>{
 
-  if (mainFloor.innerHTML != ""){
     mainFloor.innerHTML="";
-  }
 
 const password= document.getElementById('password');
 if (password.value === dueño){
@@ -311,18 +296,21 @@ if (password.value === dueño){
     contenedorModificar.appendChild(sustraerElemento);
     mainFloor.appendChild(contenedorModificar);
 }
+
+botonModificar.addEventListener("click", ()=>{
+ mainFloor.innerHTML="";
+ modificar()
+})
+
  })
 }
 modificar()
- 
 
 
 
 function addLibro() {
 
-if(agregar.innerHTML != ""){
   agregar.innerHTML="";
-}
 
 let botonBorrar=  document.createElement("button");
 let newLibro= document.createElement("div");
@@ -375,9 +363,7 @@ agregar.appendChild(contentFinalizar)
 
 function sustraerLibro(){
 
-if(sustraer.innerHTML != ""){
   sustraer.innerHTML="";
-}
       
 let botonBorrar= document.createElement("button");
 let titulo= document.createElement("div");
@@ -419,4 +405,22 @@ sustraer.appendChild(botonBorrar);
 sustraer.appendChild(titulo);
 sustraer.appendChild(input);
 sustraer.appendChild(contentFinalizar);
+}
+
+
+function porcentaje(n, porcentaje, sumar){
+  
+  let cardTop= document.createElement("div");
+  let cardFloor= document.createElement("div");
+  cardTop.className= "carritoElement";
+  cardFloor.className= "carritoElement";
+  
+  let desc= Math.round(sumar * porcentaje);
+  let round= Math.round(sumar-desc);
+  
+  cardTop.innerHTML= `<div> -${n}% </div><div> $${desc} </div>`
+  cardFloor.innerHTML= `<div> Total </div><div> $${round} </div>`;
+  
+  total.appendChild(cardTop);
+  total.appendChild(cardFloor);
 }
