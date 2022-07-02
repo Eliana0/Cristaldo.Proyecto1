@@ -43,15 +43,19 @@ header .buscador input{
 header .buscador input::placeholder{
   color: rgba(0, 0, 0, 0.589);
 }
-.lupa{
+.usuario{
   background: transparent;
   border: none;
 }
-.lupa:hover{
-  color: white;
+.usuario:hover{
+  color: grey;
 }
 
-
+#mensajeSus{
+  display: flex;
+  justify-content: center;
+  color: #b80e0e;
+}
 
 /*tienda*/
 
