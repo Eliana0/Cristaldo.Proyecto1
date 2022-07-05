@@ -36,8 +36,8 @@
 <main>
     
     <!--MENSAJE-->
-    
-    <div id="mensajeSus"></div>
+
+
     
     <!--GALERIA--> 
     <div>
@@ -74,41 +74,72 @@
 
     <!--CONTACTO-->
     <div class="form">
-
-        <div class="contactanos">
-            <h1 class="titulo">CONTACTANOS</h1>
-                    <div class= "mensaje">
-                <div class="form-body">
-                <div class="col">
-                    <input type="text" class="form-control" id="formNombre" placeholder="Nombre">
-                </div>
-                <div class="col">
-                    <input type="text" class="form-control" id="formApellido" placeholder="Apellido">
-                </div>
-                <div class="col">
-                    <input type="email" class="form-control" id="formMail" placeholder="Mail">
-                </div>
-                <div class="col">
-                    <input type="number" class="form-control" id="formNumero" placeholder="Teléfono">
-                </div>
-                <div class="form-floating">
-                    <textarea class="form-control" placeholder="Escriba aquí" id="formText" style="height: 100px"></textarea>
-                    <label for="floatingTextarea2"></label>
-                </div>
-                <div>
-                    <button type="submit" class="botonComprar" id="botonContacto">Enviar</button>
+    
+    <form id="formContacto" type="submit">
+            <div class="contactanos">
+                <h1 class="titulo">CONTACTANOS</h1>
+                <div class= "mensaje">
+                    <div class="form-body">
+                    <div class="col">
+                        <input type="text" class="form-control" id="formNombre" placeholder="Nombre">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" id="formApellido" placeholder="Apellido">
+                    </div>
+                    <div class="col">
+                        <input type="email" class="form-control" id="formMail" placeholder="Mail">
+                    </div>
+                    <div class="col">
+                        <input type="number" class="form-control" id="formNumero" placeholder="Teléfono">
+                    </div>
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Escriba aquí" id="formText" style="height: 100px"></textarea>
+                        <label for="floatingTextarea2"></label>
+                    </div>
+                    <div>
+                        <button type="submit" class="botonComprar" id="botonContacto">Enviar</button>
                     </div>     
                     <div id="textContacto" class="text-red"></div>                                     
                 </div>
             </div>
         </div>
-
+    </form>
+        
 
         <!--SUSCRIBETE-->
 
-     <div class="formulario">
+
+        <form id="miFormSuscription" type="submit">
+            <div class="formulario">
+               <div class="main__formulario">
+                       <h1 class="titulo">SUSCRIBETE</h1>
+                   <div class="form-body">
+                       <div class="col-12">
+                           <label for="inputText" class="form-label"></label>
+                           <input type="text" class="form-control" id="susNombre" placeholder="Nombre">
+                       </div>
+                       <div class="col-12">
+                           <label for="inputText" class="form-label"></label>
+                           <input type="text" class="form-control" id="susApellido" placeholder="Apellido">
+                       </div>
+                       <div class="col-12">
+                           <label for="inputMail" class="form-label"></label>
+                           <input type="mail" class="form-control" id="susMail" placeholder="Mail">
+                       </div>
+                           <div class="col-12">
+                               <button type="submit" class="botonComprar" id="botonSuscripcion">Enviar</button>
+                           </div>
+                           <div id="susText" class="text-red"></div>
+                   </div>
+               </div>
+           </div>
+       </form>
+
+
+<!--
+    <div class="formulario">
         <div class="main__formulario">
-                <h1 class="titulo">SUSCRIBETE</h1>
+            <h1 class="titulo">SUSCRIBETE</h1>
             <div class="form-body">
                 <div class="col-12">
                     <label for="inputText" class="form-label"></label>
@@ -122,12 +153,13 @@
                     <label for="inputMail" class="form-label"></label>
                     <input type="mail" class="form-control" id="susMail" placeholder="Mail">
                 </div>
-                    <div class="col-12">
-                        <button type="submit" class="botonComprar" id="botonSuscripcion">Enviar</button>
-                    </div>
-                    <div id="susText" class="text-red"></div>
+                <div class="col-12">
+                    <button type="submit" class="botonComprar" id="botonSuscripcion">Enviar</button>
+                </div>
+                <div id="susText" class="text-red"></div>
             </div>
         </div>
+    -->
     </div>
     </div>
     
