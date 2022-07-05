@@ -84,7 +84,7 @@ function crearTienda(array){
     boton.innerText = "Agregar al carrito";
     cardImg.appendChild(boton);
     boton.addEventListener("click", ()=>{
-
+      
   agregaCompras(libro)
     });
   });
@@ -139,40 +139,42 @@ function crearTienda(array){
 }borrarCarrito()
 
 
+
+
                       
-  function suscribirse(){
-    document.getElementById("miFormSuscription").reset();
-    const susText= document.getElementById("susText");
-    let botonSus= document.getElementById("botonSuscripcion");
-    botonSus.addEventListener("click", ()=>{
-      const susNombre= document.getElementById(`susNombre`).value.toUpperCase();
-      const susApellido= document.getElementById("susApellido").value.toUpperCase();  
-      const susMail= document.getElementById("susMail").value.toLowerCase();
+function suscribirse(){
+  document.getElementById("miFormSuscription").reset();
+  const susText= document.getElementById("susText");
+  let botonSus= document.getElementById("botonSuscripcion");
+  botonSus.addEventListener("click", ()=>{
+    const susNombre= document.getElementById(`susNombre`).value.toUpperCase();
+    const susApellido= document.getElementById("susApellido").value.toUpperCase();  
+    const susMail= document.getElementById("susMail").value.toLowerCase();
 
-         if(susNombre.length == 0){
-           susText.innerHTML= `*Escriba su nombre`
-         }else if(susApellido.length == 0){
-             susText.innerHTML= `*Escriba su apellido`
-         }else if(susMail.length == 0){
-            susText.innerHTML= `*Escriba su mail`
-         }else{
-            const suscriptor= {
-              nombre: susNombre,
-              apellido: susApellido,
-              mail: susMail,
-             productos: carrito
-            };
-            
-            localStorage.setItem("suscriptor", JSON.stringify(suscriptor));
+       if(susNombre.length == 0){
+         susText.innerHTML= `*Escriba su nombre`
+       }else if(susApellido.length == 0){
+           susText.innerHTML= `*Escriba su apellido`
+       }else if(susMail.length == 0){
+          susText.innerHTML= `*Escriba su mail`
+       }else{
+          const suscriptor= {
+            nombre: susNombre,
+            apellido: susApellido,
+            mail: susMail,
+           productos: carrito
+          };
+          
+          localStorage.setItem("suscriptor", JSON.stringify(suscriptor));
 
-            alert(`¡¡Felisitaciones, ${susNombre}!!`, `Te has suscripto a la página de libros de Stephen king`);
+          alert(`¡¡Felisitaciones, ${susNombre}!!`, `Te has suscripto a la página de libros de Stephen king`);
 
-            document.getElementById("miFormSuscription").reset();
-        }
-      
-      })
-    }
-    suscribirse()  
+          document.getElementById("miFormSuscription").reset();
+      }
+    
+    })
+  }
+  suscribirse()   
 
 
 
@@ -185,7 +187,7 @@ function crearTienda(array){
         
         let mail= document.getElementById('buscarUsuario').value.toLowerCase();
       let suscriptor= JSON.parse(localStorage.getItem(`suscriptor`));
-        suscriptor.mail === mail ? bienvenidaUsuario() : alert("Usuario no suscripto")
+        suscriptor.mail === mail ? bienvenidaUsuario() : alert("Usuario no suscripto");
       })
     }verDatosSuscriptor()
 
@@ -210,6 +212,7 @@ function crearTienda(array){
         carritoDeCompras.innerHTML= ``;
       })
     }cerrarUsuario()
+
 
 
 
@@ -268,8 +271,11 @@ function agregaCompras(objeto){
   carritoElement.appendChild(borrarElement);
   carritoDeCompras.append(carritoElement); 
   
+  carrito.push({precio: objeto?.precio, nombre: objeto?.nombre})
 }
    
+
+
 
 
 function porcentaje(n, porcentaje, sumar){
@@ -291,6 +297,8 @@ function porcentaje(n, porcentaje, sumar){
 
 
 
+
+
 function bienvenidaUsuario(){
   let suscriptor= JSON.parse(localStorage.getItem(`suscriptor`));
   let {nombre, apellido, productos} = suscriptor;
@@ -298,6 +306,7 @@ function bienvenidaUsuario(){
   for(let libro of productos){
     agregaCompras(libro)
   }
-  alert(`Hola, ${nombre} ${apellido}`, `bienvenido nuevamente`);
-
+  let mensajeSus= document.getElementById("mensajeSus");
+  mensajeSus.innerHTML="";
+  mensajeSus.innerHTML=`<h2>Hola, ${nombre} ${apellido}, bienvenido nuevamente<h2>`;
 }
