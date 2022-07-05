@@ -1,4 +1,4 @@
-tienda = document.getElementById("galeria");
+const tienda = document.getElementById("galeria");
 
 const libros = [
   {id: 1, nombre: `IT`, precio: 6400, genero: "TERROR", img: `ima/IT.jpg`, descripcion: "It es un payaso malvado que vive bajo la ciudad de Derry y se alimenta del miedo de sus victimas. Sólo un grupo de niños unidos por la amistad podrán detenerlo."},
@@ -23,7 +23,8 @@ const libros = [
   {id: 20, nombre: `CHRISTINE`, precio: 2000, genero: "TERROR", img: "ima/CHRISTINE.jpg", descripcion: "Arnie Cunningham compra su primer auto. Pero, cuando la gente comienza a morir en sospechosos accidentes, no se puede negar la verdad: el auto está vivo."} 
 ];
 
-libros.sort((v1, v2) => v1.precio - v2.precio);  
+libros.sort((v1, v2) => v1.precio - v2.precio); 
+crearTienda(libros) 
 console.table(libros);
 
 
@@ -37,8 +38,27 @@ let p30= 0.3;
 const carritoDeCompras = document.querySelector(`#carritoDeCompras`);
 const vaciarCarrito = document.getElementById(`vaciarCarrito`);
 const total = document.querySelector(`#total`);
-let botonOrdenar= document.getElementById("ordenar");
 
+
+
+function ordenarMayor(){
+  let botonMayor= document.getElementById(`botonMayor`);
+  botonMayor.addEventListener("click", ()=>{
+    libros.sort((v1, v2) => v1.precio - v2.precio) && orden(libros.sort((v1, v2) => v2.precio - v1.precio));
+  })
+}ordenarMayor()
+
+function ordenarMenor(){
+  let botonMenor= document.getElementById(`botonMenor`);
+  botonMenor.addEventListener("click", ()=>{
+    libros.sort((v1, v2) => v2.precio - v1.precio) && orden(libros.sort((v1, v2) => v1.precio - v2.precio));
+  })
+}ordenarMenor()
+
+function orden(formula){
+  tienda.innerHTML="";
+  crearTienda(formula)
+}
 
 
 
@@ -68,7 +88,8 @@ function crearTienda(array){
   agregaCompras(libro)
     });
   });
-} crearTienda(libros) 
+} 
+//crearTienda(libros) 
 
 
 

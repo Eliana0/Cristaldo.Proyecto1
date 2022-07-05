@@ -57,15 +57,52 @@ header .buscador input::placeholder{
   color: #b80e0e;
 }
 
+
 /*tienda*/
 
 .titulo{
-   justify-content: center;
-   text-align: center;
-   margin: 5%;
-   margin-top: 10%;
-   color:rgba(211, 28, 28, 0.72);
-   font-size: 400%;
+  justify-content: center;
+  text-align: center;
+  margin: 5%;
+  margin-top: 10%;
+  color:rgba(211, 28, 28, 0.72);
+  font-size: 400%;
+}
+
+#botonesM{
+  margin: 5%;
+}
+
+#botonMenor{
+background: transparent;
+border: none;
+}
+#botonMayor{
+background: transparent;
+border: none;
+}
+
+.bibi-plus-square{
+  background-color: #b80e0e;
+  border: none;
+  border-radius: 15%;
+  margin: 1px;
+}
+.bibi-dash-square{
+  background-color: #b80e0e;
+  border: none;
+  border-radius: 15%;
+  margin: 1px;
+}
+
+.bibi-plus-square:hover{
+  background-color: rgba(211, 28, 28, 0.451);
+  color:grey;
+}
+
+.bibi-dash-square:hover{
+  background-color: rgba(211, 28, 28, 0.451);
+  color:grey;
 }
 
  #galeria{
