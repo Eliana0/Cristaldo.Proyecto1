@@ -29,7 +29,7 @@ header .buscador{
   color: black;
 }
 
-header .buscador input{
+/* header .buscador input{
   height: 30px;
   width: 60%;
   background: transparent;
@@ -39,10 +39,10 @@ header .buscador input{
   display: flex;
   align-self: flex-start;
   font-size: 100%;
-}
-header .buscador input::placeholder{
+} */
+/* header .buscador input::placeholder{
   color: rgba(0, 0, 0, 0.589);
-}
+} */
 .usuario{
   background: transparent;
   border: none;

@@ -20,12 +20,12 @@
         <header>
             <h1>Stephen King</h1>
             <div class="buscador">
-                <input type="text" placeholder="Ingresar mail" id="buscarUsuario">
                 <button class="usuario" id="botonUsuario">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
-                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                      </svg>
-                </button>
+                 <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                     
+                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                    </svg>
+            </button>
                 <button class="usuario" id="cerrarSesion">Cerrar sesión</button>
                 
             </div>
@@ -67,8 +67,9 @@
     <p class="titulo">CARRITO</p>
     <div id="carritoDeCompras"></div>
     <div id="total"></div>
-    <div class="contentFinalizar"><button id="finalizar">Finalizar</button></div>
     <div class="contentFinalizar"><button id="vaciarCarrito">Vaciar Carrito</button></div>
+    <div class="contentFinalizar"><button id="finalizar">Ver Total</button></div>
+    <div class="contentFinalizar"><button id="botonComprar" class="botonFinalizar">Comprar</button></div>
     
     
 
@@ -136,36 +137,12 @@
        </form>
 
 
-<!--
-    <div class="formulario">
-        <div class="main__formulario">
-            <h1 class="titulo">SUSCRIBETE</h1>
-            <div class="form-body">
-                <div class="col-12">
-                    <label for="inputText" class="form-label"></label>
-                    <input type="text" class="form-control" id="susNombre" placeholder="Nombre">
-                </div>
-                <div class="col-12">
-                    <label for="inputText" class="form-label"></label>
-                    <input type="text" class="form-control" id="susApellido" placeholder="Apellido">
-                </div>
-                <div class="col-12">
-                    <label for="inputMail" class="form-label"></label>
-                    <input type="mail" class="form-control" id="susMail" placeholder="Mail">
-                </div>
-                <div class="col-12">
-                    <button type="submit" class="botonComprar" id="botonSuscripcion">Enviar</button>
-                </div>
-                <div id="susText" class="text-red"></div>
-            </div>
-        </div>
-    -->
     </div>
     </div>
     
     </div>
 
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="index.js"></script>
 </main>
 

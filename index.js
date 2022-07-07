@@ -84,15 +84,21 @@ function crearTienda(array){
     boton.innerText = "Agregar al carrito";
     cardImg.appendChild(boton);
     boton.addEventListener("click", ()=>{
-      
-  agregaCompras(libro)
+
+      Toastify({
+        text: "agregado",
+        duration: 5000, 
+      }).showToast();
+
+      agregaCompras(libro)
     });
   });
 } 
 
 
 
-  function agregaCarrito(){
+function agregaCarrito(){
+
     let finalizar = document.getElementById(`finalizar`)
     finalizar.className= "botonFinalizar"
     finalizar.addEventListener(`click`, ()=>{ 
@@ -121,6 +127,7 @@ function crearTienda(array){
         cardFloor.innerHTML= `<div> Total </div><div>$${sumar}</div>`;
         total.appendChild(cardFloor);
       }
+      totalComprar(sumar)
     }) 
   }agregaCarrito()
     
@@ -140,6 +147,14 @@ function crearTienda(array){
 
 
 
+function totalComprar(total){
+  let botonComprar= document.getElementById("botonComprar");
+  botonComprar.addEventListener("click", ()=>{
+    if(total.innerHTML != ""){
+      swal("¡¡GRACIAS!!", `En momentos le llegará un mail con el estado de su pedido`, "success");
+    }
+  })
+  }
 
                       
 function suscribirse(){
@@ -167,10 +182,10 @@ function suscribirse(){
           
           localStorage.setItem("suscriptor", JSON.stringify(suscriptor));
 
-          alert(`¡¡Felisitaciones, ${susNombre}!!`, `Te has suscripto a la página de libros de Stephen king`);
-
           document.getElementById("miFormSuscription").reset();
-      }
+
+          swal(`!!Felisitaciones, ${susNombre}!!`, `Te has suscripto a la página de libros de Stephen King`);
+        }
     
     })
   }
@@ -185,9 +200,14 @@ function suscribirse(){
       botonUsuario.addEventListener("click", ()=>{
         total.innerHTML="";
         
-        let mail= document.getElementById('buscarUsuario').value.toLowerCase();
-      let suscriptor= JSON.parse(localStorage.getItem(`suscriptor`));
-        suscriptor.mail === mail ? bienvenidaUsuario() : alert("Usuario no suscripto");
+        swal("Escriba su mail", {
+          content: "input",
+        })
+        .then((value) => {
+          let suscriptor= JSON.parse(localStorage.getItem(`suscriptor`));
+            suscriptor.mail === value ? bienvenidaUsuario() : swal("Usuario no suscripto"); 
+        });
+
       })
     }verDatosSuscriptor()
 
@@ -200,11 +220,18 @@ function suscribirse(){
 
         let suscriptor= JSON.parse(localStorage.getItem(`suscriptor`));
         let {nombre, apellido} = suscriptor;
-        let mensajeSus= document.getElementById("mensajeSus");
-        mensajeSus.innerHTML="";
 
-        alert(`Hasta la proxima, ${nombre} ${apellido}`);
+        swal({
+          title: "¿Desea cerrar sesión?",
+          text: "Al cerrar sesión sus libros quedarán guardados en el carrito",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
 
+          willDelete && swal(`Hasta la próxima, ${nombre} ${apellido}`, {icon: "success",});
+      })
         suscriptor.productos = carrito;
         localStorage.setItem("suscriptor", JSON.stringify(suscriptor));
         carrito = [];
@@ -237,7 +264,7 @@ function contacto(){
         textContacto.innerHTML=`*Escriba un mail`
       }
       else{
-        textContacto.innerHTML=`Su mensaje ha sido enviado correctamente. A la brevedad nos pondremos en contacto con usted`;
+        swal("Mensaje Enviado", "Su mensaje ha sido enviado correctamente. A la bervedad nos pondremos en contacto con usted", "success");
         document.getElementById("formContacto").reset();
       }
     })
@@ -306,7 +333,8 @@ function bienvenidaUsuario(){
   for(let libro of productos){
     agregaCompras(libro)
   }
-  let mensajeSus= document.getElementById("mensajeSus");
-  mensajeSus.innerHTML="";
-  mensajeSus.innerHTML=`<h2>Hola, ${nombre} ${apellido}, bienvenido nuevamente<h2>`;
+  swal(`HOLA, ${nombre} ${apellido}`, `Bienvenido/a nuevamente`);
 }
+
+
+  
