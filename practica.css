@@ -29,20 +29,6 @@ header .buscador{
   color: black;
 }
 
-/* header .buscador input{
-  height: 30px;
-  width: 60%;
-  background: transparent;
-  border: transparent;
-  border-bottom: 1px solid black;
-  outline: none;
-  display: flex;
-  align-self: flex-start;
-  font-size: 100%;
-} */
-/* header .buscador input::placeholder{
-  color: rgba(0, 0, 0, 0.589);
-} */
 .usuario{
   background: transparent;
   border: none;
@@ -57,6 +43,18 @@ header .buscador{
   color: #b80e0e;
 }
 
+/*MENSAJE*/
+
+.alertCompra{
+  background-color: rgb(142, 24, 24);
+  color:rgb(0, 0, 0);
+  position: fixed;
+  display: flex;
+  font-size: 200%;
+  align-self: center;
+  justify-content: center;
+   width: 100%;
+}
 
 /*tienda*/
 

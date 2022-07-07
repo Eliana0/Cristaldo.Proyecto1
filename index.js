@@ -84,17 +84,18 @@ function crearTienda(array){
     boton.innerText = "Agregar al carrito";
     cardImg.appendChild(boton);
     boton.addEventListener("click", ()=>{
+      agregaCompras(libro)
 
       Toastify({
-        text: "agregado",
-        duration: 5000, 
-      }).showToast();
+        text: "Agregado",
+        duration: 2000,
+        gravity: "top",
+        className: "alertCompra",
+      }).showToast()
 
-      agregaCompras(libro)
     });
   });
 } 
-
 
 
 function agregaCarrito(){
