@@ -16,7 +16,7 @@ const total = document.querySelector(`#total`);
 
  
 const fetchData = async () => {
-  const res = await fetch("/data.json");
+  const res = await fetch("data.json");
   const data = await res.json();
 
   data.sort((v1, v2) => v1.precio - v2.precio);
