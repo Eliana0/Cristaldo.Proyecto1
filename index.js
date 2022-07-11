@@ -1,7 +1,7 @@
 
 const tienda = document.getElementById("galeria");
 
-const libros = [
+/* const libros = [
   {nombre: `IT`, precio: 6400, genero: "TERROR", img: `ima/IT.jpg`, descripcion: "It es un payaso malvado que vive bajo la ciudad de Derry y se alimenta del miedo de sus victimas. Sólo un grupo de niños unidos por la amistad podrán detenerlo."},
   {nombre: `DESPUÉS`, precio: 4200, genero: "CRIMINAL, SUSPENSO", img: `ima/despues.jpg`, descripcion: "Cuando una inspectora le obliga a evitar el último atentado de un asesino, Jamie no tardará en descubrir que el precio que debe pagar por su poder tal vez es demasiado alto."}, 
   {nombre: `EL RESPLANDOR`, precio: 3600, genero: "TERROR", img: `ima/EL_RESPLANDOR.jpg`, descripcion: "Jack es contratado para cuidar el hotel Overlook junto con su familia. Lo que no esperaban es que ese lugar despertará el resplandor de su hijo Danny."}, 
@@ -22,12 +22,14 @@ const libros = [
   {nombre: `LA MITAD OSCURA`, precio: 4500, genero: "RECOPILACION", img: "ima/LA_MITAD_OSCURA.jpg", descripcion: "Cuando el Alan Pangborn es acusado de asesinato, Thad quería afirmar su inocencia,¿cómo podía explicar que sus huellas aparecieran por toda la escena del crimen?."},
   {nombre: `EL INSTITUTO`, precio: 3600, genero: "CIENCIA FICCION", img: "ima/The-Institute.jpg", descripcion: "Luke Ellis es un chico especial. Tiene un pequeño poder que otros ansían más que él y por el que asesinarán y harán lo que haga falta."},     
   {nombre: `CHRISTINE`, precio: 2000, genero: "TERROR", img: "ima/CHRISTINE.jpg", descripcion: "Arnie Cunningham compra su primer auto. Pero, cuando la gente comienza a morir en sospechosos accidentes, no se puede negar la verdad: el auto está vivo."} 
-];
+]; */
 
-
-libros.sort((v1, v2) => v1.precio - v2.precio); 
-crearTienda(libros) 
-console.table(libros);
+/* fetch("./data.json");
+then((res) => res.json());
+then((data) => {
+data.sort((v1, v2) => v1.precio - v2.precio)});
+crearTienda() 
+console.table(); */
 
 
 let carrito = [];
@@ -43,7 +45,7 @@ const total = document.querySelector(`#total`);
 
 
 
-function ordenarMayor(){
+/* function ordenarMayor(){
   let botonMayor= document.getElementById(`botonMayor`);
   botonMayor.addEventListener("click", ()=>{
     libros.sort((v1, v2) => v1.precio - v2.precio) && orden(libros.sort((v1, v2) => v2.precio - v1.precio));
@@ -60,45 +62,52 @@ function ordenarMenor(){
 function orden(formula){
   tienda.innerHTML="";
   crearTienda(formula)
-}
+} */
 
 
 
-function crearTienda(array){
-  array.forEach((libro)=>{
-  let card = document.createElement("div");
-    card.className= "card"; 
-    tienda.append(card) 
-    let cardImg = document.createElement("div");
-    cardImg.className= "img-box";
-    cardImg.innerHTML= `<img src="${libro.img}" class="card-img-top" id="imagen">`;
-    card.append(cardImg); 
-    let cardBody= document.createElement("div");
-    cardBody.className= "card-body"
-    cardBody.innerHTML=`
-                        <h1 id="libroTitulo">${libro.nombre}</h1>
-                        <h2 id="libroPrecio">$${libro.precio}</h2>
-                        <b>${libro.genero}</b>
-                        <p>${libro.descripcion}</p><br>`;
-    card.appendChild(cardBody);
-    let boton = document.createElement(`button`);
-    boton.className = "botonComprar";
-    boton.innerText = "Agregar al carrito";
-    cardImg.appendChild(boton);
-    boton.addEventListener("click", ()=>{
-      agregaCompras(libro)
-      
-      boton.innerText= "Agregado";
-      
-      setTimeout(()=>{
-        boton.innerText = "Agregar al carrito";
-      }, 1500);
+//function crearTienda(){
+
+
+  console.log(fetch(`/data.json`))
+/*   .then((res) => res.json())
+  .then((data) => {
+
+    data.forEach((libro)=>{
+      let card = document.createElement("div");
+      card.className= "card"; 
+      tienda.append(card) 
+      let cardImg = document.createElement("div");
+      cardImg.className= "img-box";
+      cardImg.innerHTML= `<img src="${libro.img}" class="card-img-top" id="imagen">`;
+      card.append(cardImg); 
+      let cardBody= document.createElement("div");
+      cardBody.className= "card-body"
+      cardBody.innerHTML=`
+                      <h1 id="libroTitulo">${libro.nombre}</h1>
+                      <h2 id="libroPrecio">$${libro.precio}</h2>
+                      <b>${libro.genero}</b>
+                      <p>${libro.descripcion}</p><br>`;
+      card.appendChild(cardBody);
+      let boton = document.createElement(`button`);
+      boton.className = "botonComprar";
+      boton.innerText = "Agregar al carrito";
+      cardImg.appendChild(boton);
+      boton.addEventListener("click", ()=>{
+        agregaCompras(libro)
         
+        boton.innerText= "Agregado";
+        
+        setTimeout(()=>{
+          boton.innerText = "Agregar al carrito";
+        }, 1500);
+        
+      });
     });
-  });
-} 
+  }); */
+//} crearTienda()
 
-
+/*
 function agregaCarrito(){
 
     let finalizar = document.getElementById(`finalizar`)
@@ -340,3 +349,4 @@ function vaciar(){
   total.innerHTML= ``;
   carritoDeCompras.innerHTML= ``;
 }
+*/
