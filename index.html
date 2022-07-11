@@ -114,19 +114,19 @@
                        <h1 class="titulo">SUSCRIBETE</h1>
                    <div class="form-body">
                        <div class="col-12">
-                           <label for="inputText" class="form-label"></label>
-                           <input type="text" class="form-control" id="susNombre" placeholder="Nombre">
+                           <label for="nombre" class="form-label"></label>
+                           <input type="text" class="form-control" id="susNombre" placeholder="Nombre" name="nombre" required>
                        </div>
                        <div class="col-12">
                            <label for="inputText" class="form-label"></label>
-                           <input type="text" class="form-control" id="susApellido" placeholder="Apellido">
+                           <input type="text" class="form-control" id="susApellido" placeholder="Apellido" name="apellido" required>
                        </div>
                        <div class="col-12">
                            <label for="inputMail" class="form-label"></label>
-                           <input type="mail" class="form-control" id="susMail" placeholder="Mail">
+                           <input type="mail" class="form-control" id="susMail" placeholder="Mail" name="mail" required>
                        </div>
                            <div class="col-12">
-                               <button type="submit" class="botonComprar" id="botonSuscripcion">Enviar</button>
+                               <button type="submit" class="botonComprar" id="botonSuscripcion" value="Enviar">Enviar</button>
                            </div>
                            <div id="susText" class="text-red"></div>
                    </div>
@@ -161,6 +161,7 @@
     </div>
 </footer>
 </body>
+
 </html>
 
 
