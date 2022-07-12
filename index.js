@@ -1,4 +1,3 @@
-
 const tienda = document.getElementById("galeria");
 
 
@@ -16,16 +15,16 @@ const total = document.querySelector(`#total`);
 
  
 const fetchData = async () => {
-  const res = await fetch("data.json");
+  const res = await fetch("./data.json");
   const data = await res.json();
 
   data.sort((v1, v2) => v1.precio - v2.precio);
   console.table(data);
 
 
-
-
   function ordenarMayor(){
+
+
     let botonMayor= document.getElementById(`botonMayor`);
     botonMayor.addEventListener("click", ()=>{
       data.sort((v1, v2) => v1.precio - v2.precio) && orden(data.sort((v1, v2) => v2.precio - v1.precio));
@@ -166,12 +165,27 @@ function suscribirse(){
             mail: susMail,
            productos: carrito
           };
+
+      
+fetch(`https://formsubmit.co/ajax/${susMail}`, {
+    method: "POST",
+    headers: { 
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+    },
+    body: JSON.stringify({
+      nombre: susNombre,
+        message: "Gracias por suscribirte a la página de libros de Stephen King"
+    })
+})
+    .then(response => response.json())
+    .then(data = swal(`!!Felisitaciones, ${susNombre}!!`, `Te has suscripto a la página de libros de Stephen King`))
+    .catch(error = swal("Error", "Ha habido un error. Por favor, intentelo nuevamente"));
+
             
             localStorage.setItem("suscriptor", JSON.stringify(suscriptor));
             
             document.getElementById("miFormSuscription").reset();
-            
-            swal(`!!Felisitaciones, ${susNombre}!!`, `Te has suscripto a la página de libros de Stephen King`);
           
         }
     
@@ -227,7 +241,7 @@ function suscribirse(){
     }cerrarUsuario()
 
 
-/*
+
 
 function contacto(){
   document.getElementById("formContacto").reset();
@@ -257,7 +271,6 @@ function contacto(){
     }
 contacto() 
 
-*/
 
 
 function agregaCompras(objeto){

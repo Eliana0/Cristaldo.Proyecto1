@@ -74,25 +74,25 @@
     <!--CONTACTO-->
     <div class="form">
     
-    <form id="formContacto" type="submit">
+    <form id="formContacto" type="submit" action="https://formsubmit.co/elianacristaldoo@gmail.com" method="POST">
             <div class="contactanos">
                 <h1 class="titulo">CONTACTANOS</h1>
                 <div class= "mensaje">
                     <div class="form-body">
                     <div class="col">
-                        <input type="text" class="form-control" id="formNombre" placeholder="Nombre">
+                        <input type="text" class="form-control" id="formNombre" placeholder="Nombre" name="nombre">
                     </div>
                     <div class="col">
-                        <input type="text" class="form-control" id="formApellido" placeholder="Apellido">
+                        <input type="text" class="form-control" id="formApellido" placeholder="Apellido" name="apellido">
                     </div>
                     <div class="col">
-                        <input type="email" class="form-control" id="formMail" placeholder="Mail">
+                        <input type="email" class="form-control" id="formMail" placeholder="Mail" name="mail">
                     </div>
                     <div class="col">
-                        <input type="number" class="form-control" id="formNumero" placeholder="Teléfono">
+                        <input type="number" class="form-control" id="formNumero" placeholder="Teléfono" name="numero">
                     </div>
                     <div class="form-floating">
-                        <textarea class="form-control" placeholder="Escriba aquí" id="formText" style="height: 100px"></textarea>
+                        <textarea class="form-control" placeholder="Escriba aquí" id="formText" style="height: 100px" name="texto"></textarea>
                         <label for="floatingTextarea2"></label>
                     </div>
                     <div>
@@ -132,7 +132,9 @@
                    </div>
                </div>
            </div>
-       </form>
+       </form> 
+
+
 
 
     </div>
@@ -163,9 +165,4 @@
 </body>
 
 </html>
-
-
-
-
-
 
