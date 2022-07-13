@@ -23,13 +23,12 @@ const fetchData = async () => {
 
 
   function ordenarMayor(){
-
-
     let botonMayor= document.getElementById(`botonMayor`);
     botonMayor.addEventListener("click", ()=>{
       data.sort((v1, v2) => v1.precio - v2.precio) && orden(data.sort((v1, v2) => v2.precio - v1.precio));
     })
   }ordenarMayor()
+
 
   function ordenarMenor(){
     let botonMenor= document.getElementById(`botonMenor`);
@@ -38,6 +37,7 @@ const fetchData = async () => {
     })
   }ordenarMenor()
   
+
   function orden(formula){
     tienda.innerHTML="";
     crearTienda(formula)
@@ -45,9 +45,36 @@ const fetchData = async () => {
 
 
 
+  function verTodos(){
+    let botonVerTodos= document.getElementById("botonVerTodos");
+    botonVerTodos.addEventListener("click", ()=>{
+      tienda.innerHTML= "";
+      crearTienda(data)
+    })
+  }verTodos()
 
-  function crearTienda(){
-    data.forEach((libro)=>{
+
+
+
+function buscador(){
+  let inputBuscador= document.getElementById("inputBuscador");
+  let botonBuscador= document.getElementById("botonBuscador");
+  
+  botonBuscador.addEventListener("click", ()=>{
+
+      let encuentra= data.filter(e => e.nombre.startsWith(inputBuscador.value.toUpperCase()));
+      tienda.innerHTML= "";
+      crearTienda(encuentra)
+      if (encuentra.length == 0){
+        tienda.innerHTML= `<h1 class="noEncontrado">No se ha encontrado el producto</h1>`;
+      }
+   })
+}buscador()
+
+
+
+  function crearTienda(place){
+    place.forEach((libro)=>{
       let card = document.createElement("div");
       card.className= "card"; 
       tienda.append(card) 
@@ -69,7 +96,7 @@ const fetchData = async () => {
       cardImg.appendChild(boton);
       boton.addEventListener("click", ()=>{
         agregaCompras(libro)
-        
+        contadorProductos()
         boton.innerText= "Agregado";
         
         setTimeout(()=>{
@@ -78,10 +105,9 @@ const fetchData = async () => {
         
       });
     });
-  }crearTienda()
+  }crearTienda(data)
 }
 fetchData();
-
 
 
 function agregaCarrito(){
@@ -123,10 +149,8 @@ function agregaCarrito(){
 
 
   function borrarCarrito() {
-    
     vaciarCarrito.className= "botonFinalizar";
-    vaciarCarrito.addEventListener(`click`, ()=>{ 
-
+    vaciarCarrito.addEventListener(`click`, ()=>{
       vaciar()
     })
 }borrarCarrito()
@@ -192,8 +216,8 @@ fetch(`https://formsubmit.co/ajax/${susMail}`, {
 
 
 
+
     function verDatosSuscriptor(){
-      
       const botonUsuario= document.getElementById("botonUsuario");
       botonUsuario.addEventListener("click", ()=>{
         total.innerHTML="";
@@ -281,9 +305,15 @@ function contacto(){
       }
         document.getElementById("formContacto").reset();
       })
-    }
-contacto() 
+    }contacto() 
 
+
+
+
+
+
+
+//LLAMAR A FUNCIONES
 
 
 function agregaCompras(objeto){
@@ -304,6 +334,7 @@ function agregaCompras(objeto){
     let buscarSustraer= carrito.find(elemento => elemento?.nombre == nombre);
     let numBuscar= carrito.indexOf(buscarSustraer);
     carrito.splice(numBuscar ,1);
+    contadorProductos()
     
     total.innerHTML= ``;
   })
@@ -351,3 +382,8 @@ function vaciar(){
   total.innerHTML= ``;
   carritoDeCompras.innerHTML= ``;
 }
+
+function contadorProductos(){
+  let numeroContador= document.getElementById("numeroContador");
+  numeroContador.innerText= carrito.length;
+  }

@@ -22,6 +22,13 @@ header{
   box-shadow: rgba(0, 0, 0, 0.35) 0px -50px 36px -28px inset;
 }
 
+header .contadorProductos{
+  display: flex;
+  margin-right: 10%;
+}
+
+
+
 header .buscador{
   display: flex;
   align-self: flex-end;
@@ -43,17 +50,26 @@ header .buscador{
   color: #b80e0e;
 }
 
-/*MENSAJE*/
+/*BUSCADOR*/
 
-.alertCompra{
-  background-color: rgb(142, 24, 24);
-  color:rgb(0, 0, 0);
-  position: fixed;
-  display: flex;
-  font-size: 200%;
-  align-self: center;
+#buscador{
+  display:flex;
   justify-content: center;
-   width: 100%;
+  margin-top: 7%;
+}
+
+#botonBuscador{
+  color: rgba(211, 28, 28, 0.72);
+  margin-left: 1%;
+}
+
+#inputBuscador{
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid rgba(211, 28, 28, 0.72);
+  width: 30%;
+  color: grey;
+  font-size: 150%;
 }
 
 /*tienda*/
@@ -69,6 +85,7 @@ header .buscador{
 
 #botonesM{
   margin: 5%;
+  display: flex;
 }
 
 #botonMenor{
@@ -80,12 +97,6 @@ background: transparent;
 border: none;
 }
 
-.bibi-plus-square{
-  background-color: #b80e0e;
-  border: none;
-  border-radius: 15%;
-  margin: 1px;
-}
 .bibi-dash-square{
   background-color: #b80e0e;
   border: none;
@@ -93,14 +104,28 @@ border: none;
   margin: 1px;
 }
 
-.bibi-plus-square:hover{
+.bibi-dash-square:hover{
   background-color: rgba(211, 28, 28, 0.451);
   color:grey;
 }
 
-.bibi-dash-square:hover{
+#botonVerTodos{
+  background-color: #b80e0e;
+  border: none;
+  border-radius: 3px;
+  font-size: 145%;
+  margin: 1%;
+  height: 28px;
+}
+
+#botonVerTodos:hover{
   background-color: rgba(211, 28, 28, 0.451);
   color:grey;
+  border: 1px solid grey;
+}
+
+.noEncontrado{
+ color: grey;
 }
 
  #galeria{
