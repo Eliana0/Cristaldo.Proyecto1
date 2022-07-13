@@ -179,19 +179,15 @@ fetch(`https://formsubmit.co/ajax/${susMail}`, {
     })
 })
     .then(response => response.json())
-    .then(data = swal(`!!Felisitaciones, ${susNombre}!!`, `Te has suscripto a la página de libros de Stephen King`))
-    .catch(error = swal("Error", "Ha habido un error. Por favor, intentelo nuevamente"));
+    .then(swal(`!!FELISITACIONES, ${susNombre}!!`, `Te has suscripto a la página de libros de Stephen King`))
+            
 
-            
-            localStorage.setItem("suscriptor", JSON.stringify(suscriptor));
-            
-            document.getElementById("miFormSuscription").reset();
-          
-        }
-    
+        localStorage.setItem("suscriptor", JSON.stringify(suscriptor));
+
+        document.getElementById("miFormSuscription").reset(); 
+      }
     })
-  }
-  suscribirse()   
+  }suscribirse()   
 
 
 
@@ -252,7 +248,7 @@ function contacto(){
     const formNombre= document.getElementById("formNombre").value.toUpperCase();
     const formApellido= document.getElementById("formApellido").value.toUpperCase();  
     const formMail= document.getElementById("formMail").value.toLowerCase(); 
-    const formNumero= document.getElementById("formNumero");
+    const formNumero= document.getElementById("formNumero").value;
     const formText= document.getElementById("formText").value;
        if(formText.length < 50){
         textContacto.innerHTML=`*El mensaje debe tener por lo menos 50 caracteres`;
@@ -264,10 +260,27 @@ function contacto(){
         textContacto.innerHTML=`*Escriba un mail`
       }
       else{
-        swal("Mensaje Enviado", "Su mensaje ha sido enviado correctamente. A la bervedad nos pondremos en contacto con usted", "success");
-        document.getElementById("formContacto").reset();
+        const formData= {
+          nombre: formNombre,
+          apellido: formApellido,
+          mail: formMail,
+          numero: formNumero,
+          mensaje: formText
+        };
+
+        fetch(`https://formsubmit.co/ajax/elianamariacristaldo@gmail.com`, {
+          method: "POST",
+          headers: { 
+              'Content-Type': 'application/json',
+              'Accept': 'application/json'
+          },
+          body: JSON.stringify(formData)
+      })
+          .then(response => response.json())
+          .then(swal(`Su mensaje ha sido enviado correctamente`, {icon: "success",}))
       }
-    })
+        document.getElementById("formContacto").reset();
+      })
     }
 contacto() 
 
