@@ -256,7 +256,6 @@ fetch(`https://formsubmit.co/ajax/${susMail}`, {
             suscriptor.productos = carrito;
             localStorage.setItem("suscriptor", JSON.stringify(suscriptor));
             vaciar()
-            contadorProductos()
            }
            })
           })
@@ -383,6 +382,7 @@ function vaciar(){
   carrito = [];
   total.innerHTML= ``;
   carritoDeCompras.innerHTML= ``;
+  contadorProductos()
 }
 
 function contadorProductos(){
