@@ -65,10 +65,11 @@ function buscador(){
       let encuentra= data.filter(e => e.nombre.startsWith(inputBuscador.value.toUpperCase()));
       tienda.innerHTML= "";
       crearTienda(encuentra)
-      if (encuentra.length == 0){
+
+      if(encuentra.length == 0){
         tienda.innerHTML= `<h1 class="noEncontrado">No se ha encontrado el producto</h1>`;
-      }
-   })
+      } 
+      })
 }buscador()
 
 
@@ -221,7 +222,6 @@ fetch(`https://formsubmit.co/ajax/${susMail}`, {
       const botonUsuario= document.getElementById("botonUsuario");
       botonUsuario.addEventListener("click", ()=>{
         total.innerHTML="";
-        
         swal("Escriba su mail", {
           content: "input",
         })
@@ -239,27 +239,28 @@ fetch(`https://formsubmit.co/ajax/${susMail}`, {
     function cerrarUsuario(){
         const cerrarSesion = document.getElementById("cerrarSesion");
         cerrarSesion.addEventListener("click", ()=>{
-
-        let suscriptor= JSON.parse(localStorage.getItem(`suscriptor`));
-        let {nombre, apellido} = suscriptor;
-
-        swal({
-          title: "¿Desea cerrar sesión?",
-          text: "Al cerrar sesión sus libros quedarán guardados en el carrito",
-          icon: "warning",
-          buttons: true,
-          dangerMode: true,
-        })
-        .then((willDelete) => {
-
-          willDelete && swal(`Hasta la próxima, ${nombre} ${apellido}`, {icon: "success",});
-      })
-        suscriptor.productos = carrito;
-        localStorage.setItem("suscriptor", JSON.stringify(suscriptor));
-        vaciar()
-      })
+          
+          let suscriptor= JSON.parse(localStorage.getItem(`suscriptor`));
+          let {nombre, apellido} = suscriptor;
+          
+          swal({
+            title: "¿Desea cerrar sesión?",
+            text: "Al cerrar sesión sus libros quedarán guardados en el carrito",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+          })
+          .then((willDelete) => {
+           if(willDelete){
+            swal(`Hasta la próxima, ${nombre} ${apellido}`, {icon: "success",});
+            suscriptor.productos = carrito;
+            localStorage.setItem("suscriptor", JSON.stringify(suscriptor));
+            vaciar()
+            contadorProductos()
+           }
+           })
+          })
     }cerrarUsuario()
-
 
 
 
@@ -374,6 +375,7 @@ function bienvenidaUsuario(){
     agregaCompras(libro)
   }
   swal(`HOLA, ${nombre} ${apellido}`, `Bienvenido/a nuevamente`);
+  contadorProductos()
 }
 
 
