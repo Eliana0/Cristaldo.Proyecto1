@@ -347,6 +347,7 @@ footer h2 {
   }
   #imagen{
     height: 160px;
+    width: 120px;
   }
   .botonComprar{
     width: 100%;
@@ -354,8 +355,8 @@ footer h2 {
   }
   .card{
     font-size: 100%;
-    max-width: 215px;
-    height: 207px;
+    max-width: 240px;
+    height: 187px;
   }
   body{
     font-size: 53%;
