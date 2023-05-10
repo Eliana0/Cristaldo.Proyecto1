@@ -2,6 +2,10 @@
 
 Este es un proyecto que simula una tienda de libros del gran autor de terror Stephen King. La tienda cumple con funcionalidades como filtrar por título, agregar al carrito, mandar mails con consultas, madar mails a la casilla con la que te has suscripto, guardar información en el almacenamiento simulando una base de datos, borrar elementos y simular login y singup; así como un deslogueo. Todo usando sólo vanilla JavaScript.
 
+## Link de githubpages
+
+https://eliana0.github.io/Cristaldo.Proyecto1/
+
 ## Requisitos
 
 - JavaScript
